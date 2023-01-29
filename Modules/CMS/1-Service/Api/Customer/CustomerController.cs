@@ -9,7 +9,6 @@ namespace Api.Customer
 {
     public class CustomerController : ApiController
     {
-    //edit
         private readonly ICustomerAppService _customerAppService;
 
         //public CustomerController(IMediator mediator) : base(mediator)

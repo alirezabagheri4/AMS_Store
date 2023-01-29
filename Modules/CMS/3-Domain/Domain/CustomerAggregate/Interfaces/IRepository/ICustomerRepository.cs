@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.CustomerAggregate.Models;
-using static System.Formats.Asn1.AsnWriter;
+﻿using Domain.CustomerAggregate.Models;
 
 namespace Domain.CustomerAggregate.Interfaces.IRepository
 {

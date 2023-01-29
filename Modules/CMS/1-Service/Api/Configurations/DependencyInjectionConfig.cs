@@ -1,6 +1,4 @@
-﻿
-
-using Infra.Ioc;
+﻿using Infra.Ioc;
 
 namespace Api.Configurations
 {
@@ -9,7 +7,6 @@ namespace Api.Configurations
         public static void AddDependencyInjectionConfiguration(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
-
             NativeInjectorBootStrapper.RegisterServices(services);
         }
     }

@@ -75,10 +75,9 @@
     <li>Micro Service</li>
     <li>ASP.NET 6.0</li>
     <li>ASP.NET WebApi Core</li>
-    <li> </li>
     <li>Entity Framework Core 6.0</li>
     <li>Dapper</li>
-    <li>Ado .Net</li>
+    <li>ADO .Net</li>
     <li>.NET Core Native DI</li>
     <li>AutoMapper</li>
     <li>FluentValidator</li>
@@ -99,6 +98,7 @@
                 </h2>
 <ul dir="auto">
     <li>Full architecture with responsibility separation concerns, SOLID and Grasp and Clean Code</li>
+    <li>SOLID and Grasp and Clean Code</li>
     <li>Object Oriented Design </li>
     <li>Domain Driven Design (Layers and Domain Model Pattern) </li>
     <li>Domain Validations</li>

@@ -1,9 +1,9 @@
 ﻿using Api.Configurations;
 using MediatR;
 
-namespace Api.Builders
+namespace Api.Extensions
 {
-    public static class ServiceBuilder
+    public static class ServiceExtension
     {
         public static WebApplication ConfigureServices(this WebApplicationBuilder builder)
         {
@@ -14,6 +14,10 @@ namespace Api.Builders
                 .AddJsonFile("appsettings.json", true, true)
                 .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true)
                 .AddEnvironmentVariables();
+
+            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             // Setting DBContexts
             builder.Services.AddDatabaseConfiguration(builder.Configuration);

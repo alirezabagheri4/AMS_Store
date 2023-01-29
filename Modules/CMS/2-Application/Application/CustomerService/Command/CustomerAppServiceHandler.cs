@@ -51,10 +51,7 @@ namespace Application.CustomerService.Command
             return await _mediator.SendCommand(removeCommand);
         }
 
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
+        public void Dispose() => GC.SuppressFinalize(this);
     }
 }
 
