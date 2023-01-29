@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infra.Data.Configs
+namespace Infra.Data.Data.Configurations
 {
     internal class AddressConfig : IEntityTypeConfiguration<Address>
     {

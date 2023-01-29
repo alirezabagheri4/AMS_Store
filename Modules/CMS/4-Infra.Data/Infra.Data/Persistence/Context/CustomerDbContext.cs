@@ -4,7 +4,7 @@ using Domain.Framework;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.Data.Context.EFContext
+namespace Infra.Data.Data.Context
 {
     public class CustomerDbContext : DbContext, IUnitOfWork
     {
@@ -33,7 +33,7 @@ namespace Infra.Data.Data.Context.EFContext
 
                 base.OnModelCreating(modelBuilder);
 
-                modelBuilder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+                modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
                 modelBuilder.HasDefaultSchema("CMS");
             }
         }

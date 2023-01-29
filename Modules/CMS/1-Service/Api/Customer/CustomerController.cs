@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Customer
 {
-
     public class CustomerController : ApiController
     {
     //edit

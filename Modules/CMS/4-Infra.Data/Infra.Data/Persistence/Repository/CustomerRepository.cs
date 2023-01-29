@@ -1,7 +1,7 @@
 ﻿using Domain.Common;
 using Domain.CustomerAggregate.Interfaces.IRepository;
 using Domain.CustomerAggregate.Models;
-using Infra.Data.Data.Context.EFContext;
+using Infra.Data.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Data.Repository

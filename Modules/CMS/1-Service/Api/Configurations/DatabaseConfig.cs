@@ -1,6 +1,6 @@
 ﻿
 
-using Infra.Data.Data.Context.EFContext;
+using Infra.Data.Data.Context;
 using Infra.Data.Data.Framework;
 using Microsoft.EntityFrameworkCore;
 

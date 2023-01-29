@@ -51,7 +51,6 @@ namespace Api.Configurations
                         new string[] { }
                     }
                 });
-
             });
         }
 

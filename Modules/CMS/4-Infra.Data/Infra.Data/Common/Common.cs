@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infra.Data.Common
 {
-    internal class Class1
+    internal class Common
     {
     }
 }

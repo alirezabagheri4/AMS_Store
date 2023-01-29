@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infra.Data.Configs
+namespace Infra.Data.Data.Configurations
 {
     internal class CustomerConfig : IEntityTypeConfiguration<Customer>
     {
@@ -25,6 +25,7 @@ namespace Infra.Data.Configs
         }
     }
 }
+
 //add relation one to one in product config
 //builder.HasOne(c=>c.Discount).WithOne().HasForeignKey<Discount>(x=>x.ProductId);
 
