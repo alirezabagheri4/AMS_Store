@@ -1,4 +1,4 @@
-﻿using Domain.CustomerAggregate.Models;
+﻿using Domain.Aggregates.CustomerAggregate.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

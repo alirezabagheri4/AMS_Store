@@ -1,7 +1,7 @@
 ﻿using Api.Framework;
 using Application.Interface;
 using Application.ViewModel;
-using Domain.CustomerAggregate.Commands.Command;
+using Domain.Aggregates.CustomerAggregate.Commands.Command;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

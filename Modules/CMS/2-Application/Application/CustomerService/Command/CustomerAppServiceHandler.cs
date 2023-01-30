@@ -1,9 +1,9 @@
 ﻿using Application.Interface;
 using Application.ViewModel;
 using AutoMapper;
+using Domain.Aggregates.CustomerAggregate.Commands.Command;
+using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
 using Domain.Common;
-using Domain.CustomerAggregate.Commands.Command;
-using Domain.CustomerAggregate.Interfaces.IRepository;
 using FluentValidation.Results;
 
 namespace Application.CustomerService.Command

@@ -1,6 +1,6 @@
-﻿using Domain.Common;
-using Domain.CustomerAggregate.Interfaces.IRepository;
-using Domain.CustomerAggregate.Models;
+﻿using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
+using Domain.Aggregates.CustomerAggregate.Models;
+using Domain.Common;
 using Infra.Data.Data.Context;
 using Microsoft.EntityFrameworkCore;
 

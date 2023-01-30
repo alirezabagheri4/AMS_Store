@@ -1,5 +1,5 @@
-﻿using Domain.Common;
-using Domain.CustomerAggregate.Models;
+﻿using Domain.Aggregates.CustomerAggregate.Models;
+using Domain.Common;
 using Domain.Framework;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;

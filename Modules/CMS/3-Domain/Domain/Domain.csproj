@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CustomerAggregate\NewFolder\**" />
-    <EmbeddedResource Remove="CustomerAggregate\NewFolder\**" />
-    <None Remove="CustomerAggregate\NewFolder\**" />
+    <Compile Remove="Aggregates\CustomerAggregate\NewFolder\**" />
+    <EmbeddedResource Remove="Aggregates\CustomerAggregate\NewFolder\**" />
+    <None Remove="Aggregates\CustomerAggregate\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>

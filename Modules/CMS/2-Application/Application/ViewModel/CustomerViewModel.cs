@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Domain.CustomerAggregate.Models;
+using Domain.Aggregates.CustomerAggregate.Models;
 
 namespace Application.ViewModel
 {

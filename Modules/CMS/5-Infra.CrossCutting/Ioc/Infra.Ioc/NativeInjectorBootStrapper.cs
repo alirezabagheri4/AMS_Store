@@ -1,9 +1,9 @@
 ﻿using Application.CustomerService.Command;
 using Application.Interface;
+using Domain.Aggregates.CustomerAggregate.Commands.Command;
+using Domain.Aggregates.CustomerAggregate.Commands.Handlers;
+using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
 using Domain.Common;
-using Domain.CustomerAggregate.Commands.Command;
-using Domain.CustomerAggregate.Commands.Handlers;
-using Domain.CustomerAggregate.Interfaces.IRepository;
 using FluentValidation.Results;
 using Infra.Bus;
 using Infra.Data.Data.Context;

@@ -1,6 +1,6 @@
 ﻿using Application.ViewModel;
 using AutoMapper;
-using Domain.CustomerAggregate.Models;
+using Domain.Aggregates.CustomerAggregate.Models;
 
 namespace Application.AutoMapper
 {
