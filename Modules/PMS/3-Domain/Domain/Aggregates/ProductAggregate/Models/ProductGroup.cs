@@ -8,7 +8,7 @@ using Domain.Framework;
 
 namespace Domain.Aggregates.ProductAggregate.Models
 {
-    internal class ProductGroup : BaseEntity, IAggregateRoot
+    public class ProductGroup : BaseEntity, IAggregateRoot
     {
     }
 }
