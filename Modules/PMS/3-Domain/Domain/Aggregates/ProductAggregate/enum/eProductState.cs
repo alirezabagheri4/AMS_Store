@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Aggregates.ProductAggregate.internal enum
+namespace Domain.Aggregates.ProductAggregate
 {
-    internal class eProductState
-{
-}
+    public enum eProductState
+    {
+        Unknown = 0,
+        Active=1,
+        DeActive=2
+    }
 }

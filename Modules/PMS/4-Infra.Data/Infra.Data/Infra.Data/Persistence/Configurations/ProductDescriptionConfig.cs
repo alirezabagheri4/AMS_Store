@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Infra.Data.Persistence.Configurations
 {
-    internal class ProductConfig : IEntityTypeConfiguration<Product>
+    internal class ProductDescription : IEntityTypeConfiguration<Product>
     {
         public void Configure(EntityTypeBuilder<Customer> builder)
         {

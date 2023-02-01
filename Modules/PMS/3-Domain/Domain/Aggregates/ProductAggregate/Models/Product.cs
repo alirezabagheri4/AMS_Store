@@ -13,5 +13,13 @@ namespace Domain.Aggregates.ProductAggregate.Models
         public string Name { get; set; }
 
         public eProductState ProductState { get; set; }
+
+        public long Price { get; set; }
+
+        public List<ProductComment> ProductComments{ get; set; }
+
+        public ProductDescription ProductDescription { get; set; }
+
+        public ProductGroup ProductGroup { get; set; }
     }
 }

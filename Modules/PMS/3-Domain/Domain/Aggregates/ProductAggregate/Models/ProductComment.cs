@@ -8,7 +8,12 @@ using Domain.Framework;
 
 namespace Domain.Aggregates.ProductAggregate.Models
 {
-    internal class ProductComment : BaseEntity, IAggregateRoot
+    public class ProductComment : BaseEntity, IAggregateRoot
     {
+        public long ProductId { get; set; }
+
+        public long CustomerId { get; set; }
+
+        public string CommentText { get; set; }
     }
 }

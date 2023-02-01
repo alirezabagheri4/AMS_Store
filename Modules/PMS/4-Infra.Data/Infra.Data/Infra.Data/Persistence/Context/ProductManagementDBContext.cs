@@ -1,11 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Domain.Aggregates.ProductAggregate.Models;
 using Domain.Common;
 using Domain.Framework;
@@ -26,25 +20,23 @@ namespace Infra.Data.Persistence.Context
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductGroup> ProductGroups { get; set; }
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductComment> ProductComments { get; set; }
+        public DbSet<ProductDescription> ProductDescriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            if (Database.IsSqlServer())
-            {
-                modelBuilder.Ignore<ValidationResult>();
-                modelBuilder.Ignore<Event>();
+            if (!Database.IsSqlServer()) return;
+            modelBuilder.Ignore<ValidationResult>();
+            modelBuilder.Ignore<Event>();
 
-                foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
-                             e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
-                    property.SetColumnType("varchar(100)");
+            foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
+                         e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
+                property.SetColumnType("varchar(100)");
 
-                base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
-                modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
-                modelBuilder.HasDefaultSchema("CMS");
-            }
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
+            modelBuilder.HasDefaultSchema("CMS");
         }
 
         public async Task<bool> Commit()

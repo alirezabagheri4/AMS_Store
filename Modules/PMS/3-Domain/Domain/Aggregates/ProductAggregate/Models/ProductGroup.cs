@@ -10,5 +10,8 @@ namespace Domain.Aggregates.ProductAggregate.Models
 {
     public class ProductGroup : BaseEntity, IAggregateRoot
     {
+        public string GroupName { get; set; }
+
+        public string Description { get; set; }
     }
 }

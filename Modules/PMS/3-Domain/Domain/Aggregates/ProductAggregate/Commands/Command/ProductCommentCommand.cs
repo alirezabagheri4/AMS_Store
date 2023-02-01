@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Command
 {
-    public class ProductComment
+    internal class ProductCommentCommand
     {
     }
 }
