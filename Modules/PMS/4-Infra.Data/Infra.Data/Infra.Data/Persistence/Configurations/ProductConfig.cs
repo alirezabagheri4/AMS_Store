@@ -3,30 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Aggregates.ProductAggregate;
 using Domain.Aggregates.ProductAggregate.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Infra.Data.Persistence.Configurations
+namespace Infra.Data.Persistence.Configurations;
+
+internal class ProductConfig : IEntityTypeConfiguration<Product>
 {
-    internal class ProductConfig : IEntityTypeConfiguration<Product>
+    public void Configure(EntityTypeBuilder<Product> builder)
     {
-        public void Configure(EntityTypeBuilder<Customer> builder)
-        {
-            builder.HasKey(x => x.Id);
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id).IsRequired().HasColumnName("Id");
 
-            builder.Property(x => x.Id).IsRequired().HasColumnName("Id");
-            builder.Property(x => x.FirstName).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.LastName).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.SubmitDate).IsRequired();
-            builder.Property(x => x.PhoneNumber).HasMaxLength(20).IsRequired();
+        builder.Property(x => x.Name).HasMaxLength(50).IsRequired();
+        builder.Property(x => x.Price).IsRequired().HasDefaultValue(0);
+        builder.Property(x => x.ProductState).IsRequired().HasDefaultValue(eProductState.Unknown);
+        builder.Property(x => x.SubmitDate).IsRequired().HasDefaultValue(DateTime.Now);
 
-            builder.Ignore(x => x.IsChange);
+        builder.HasIndex(c => new { c.Id }).IsUnique();
+        builder.HasIndex(c => new { c.Name }).IsUnique();
 
-            builder.HasIndex(c => new { c.Id, c.LastName }).IsUnique();
+        //one to one
+        builder.HasOne(product => product.ProductDescription).WithOne().HasForeignKey<ProductDescription>(c => c.ProductId);
+        builder.HasOne(product => product.ProductGroup).WithOne().HasForeignKey<ProductGroup>(c => c.Products);
 
-            builder.HasOne(c => c.Address).WithOne().HasForeignKey<Address>(c => c.Id);
-            builder.ToTable("Customer", "CMS");
-        }
+        //one to many
+        builder.HasMany(product => product.ProductComments).WithOne().HasForeignKey(comment => comment.ProductId);
+
+
+        builder.ToTable("Product", "PMS");
     }
 }

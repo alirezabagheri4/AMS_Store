@@ -6,11 +6,11 @@ using Domain.Framework;
 
 namespace Infra.Data.Persistence.Context
 {
-    public class ProductManagementDBContext : DbContext, IUnitOfWork
+    public class ProductManagementDbContext : DbContext, IUnitOfWork
     {
         private readonly IMediatorHandler _mediatorHandler;
 
-        public ProductManagementDBContext(DbContextOptions<ProductManagementDBContext> options,
+        public ProductManagementDbContext(DbContextOptions<ProductManagementDbContext> options,
             IMediatorHandler mediatorHandler) : base(options)
         {
             _mediatorHandler = mediatorHandler;

@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Infra.Ioc
 {
-    public static class NativeInjectorBootStrapper
+    public static class NativeInjectorBootstrapper
     {
         public static void RegisterServices(IServiceCollection services)
         {
