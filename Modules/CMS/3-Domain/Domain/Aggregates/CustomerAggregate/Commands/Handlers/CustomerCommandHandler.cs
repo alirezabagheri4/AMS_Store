@@ -1,8 +1,8 @@
 ﻿using Domain.Common;
 using MediatR;
-using Domain.CustomerAggregate.Models;
 using Domain.Aggregates.CustomerAggregate.Commands.Command;
 using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
+using Domain.Aggregates.CustomerAggregate.Models;
 
 namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
 {

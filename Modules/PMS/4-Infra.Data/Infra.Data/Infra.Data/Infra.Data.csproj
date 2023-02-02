@@ -7,10 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\" />
-    <Folder Include="Migrations\" />
-    <Folder Include="Persistence\Interceptors\" />
-    <Folder Include="Persistence\QueryExtentions\" />
+    <Compile Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
   </ItemGroup>
 
   <ItemGroup>

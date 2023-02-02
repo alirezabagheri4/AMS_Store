@@ -7,7 +7,7 @@ namespace Api.Configurations
         public static void AddDependencyInjectionConfiguration(this IServiceCollection services)
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
-            NativeInjectorBootStrapper.RegisterServices(services);
+            Infra.Ioc.NativeInjectorBootstrapper.RegisterServices(services);
         }
     }
 }
