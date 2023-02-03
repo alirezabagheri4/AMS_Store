@@ -4,7 +4,7 @@ using Domain.Framework;
 using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.Data.Context
+namespace Infra.Data.Persistence.Context
 {
     public class CustomerDbContext : DbContext, IUnitOfWork
     {

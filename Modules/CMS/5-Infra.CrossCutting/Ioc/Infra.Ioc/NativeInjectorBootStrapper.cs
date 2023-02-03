@@ -6,8 +6,8 @@ using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
 using Domain.Common;
 using FluentValidation.Results;
 using Infra.Bus;
-using Infra.Data.Data.Context;
-using Infra.Data.Data.Repository;
+using Infra.Data.Persistence.Context;
+using Infra.Data.Persistence.Repository;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

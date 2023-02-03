@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Infra.Data.Persistence.Interceptors
 {
-    internal class AddAuditFieldInterceptor : SaveChangesInterceptor
+    public class AddAuditFieldInterceptor : SaveChangesInterceptor
     {
         public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
         {

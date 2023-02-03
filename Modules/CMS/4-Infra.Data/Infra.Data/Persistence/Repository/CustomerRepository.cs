@@ -1,10 +1,10 @@
 ﻿using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
 using Domain.Aggregates.CustomerAggregate.Models;
 using Domain.Common;
-using Infra.Data.Data.Context;
+using Infra.Data.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.Data.Repository
+namespace Infra.Data.Persistence.Repository
 {
     public class CustomerRepository : ICustomerRepository
     {

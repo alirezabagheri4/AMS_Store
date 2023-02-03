@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace Infra.Data.Data.Framework
+namespace Infra.Data.Persistence.Interceptors
 {
     public class AddAuditFieldInterceptor : SaveChangesInterceptor
     {

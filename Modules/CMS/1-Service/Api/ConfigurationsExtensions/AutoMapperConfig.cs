@@ -1,6 +1,6 @@
 ﻿using Application.AutoMapper;
 
-namespace Api.Configurations
+namespace Api.ConfigurationsExtensions
 {
     public static class AutoMapperConfig
     {

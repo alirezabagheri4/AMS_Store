@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace Api.Configurations
+namespace Api.ConfigurationsExtensions
 {
     public static class SwaggerConfig
     {
@@ -17,7 +17,8 @@ namespace Api.Configurations
                     Description = "Equinox API Swagger surface",
                     Contact = new OpenApiContact
                     {
-                        Name = "Eduardo Pires", Email = "contato@eduardopires.net.br",
+                        Name = "Eduardo Pires",
+                        Email = "contato@eduardopires.net.br",
                         Url = new Uri("http://www.eduardopires.net.br")
                     },
                     License = new OpenApiLicense

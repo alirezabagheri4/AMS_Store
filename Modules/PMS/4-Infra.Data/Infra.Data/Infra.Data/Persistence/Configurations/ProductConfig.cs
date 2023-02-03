@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Aggregates.ProductAggregate;
+using Domain.Aggregates.ProductAggregate.@enum;
 using Domain.Aggregates.ProductAggregate.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
