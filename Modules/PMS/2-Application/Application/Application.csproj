@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ProductService\Command\" />
+    <Folder Include="ProductService\Query\" />
+  </ItemGroup>
+
 </Project>
