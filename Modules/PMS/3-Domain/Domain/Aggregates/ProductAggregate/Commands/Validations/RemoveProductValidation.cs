@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Aggregates.ProductAggregate.Commands.Command;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Validations
 {
-    internal class RemoveProductValidation
+    internal class RemoveProductValidation : ProductValidation<RemoveProductCommand>
     {
+        public RemoveProductValidation()
+        {
+            ValidateId();
+        }
     }
 }

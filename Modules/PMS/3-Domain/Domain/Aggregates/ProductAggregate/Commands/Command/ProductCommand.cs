@@ -11,6 +11,7 @@ namespace Domain.Aggregates.ProductAggregate.Commands.Command
     public class ProductCommand: Common.Command
     {
         public long Id { get; set; }
+
         public string Name { get; set; }
 
         public eProductState ProductState { get; set; }
