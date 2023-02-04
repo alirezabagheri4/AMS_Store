@@ -1,37 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Aggregates.ProductAggregate.Event.EventModel;
+﻿using Domain.Aggregates.ProductAggregate.Event.EventModel;
 using MediatR;
 
-namespace Domain.Aggregates.ProductAggregate.Event.EventHandler
+namespace Domain.Aggregates.ProductAggregate.Event.EventHandler;
+
+public class ProductEventHandler :
+    INotificationHandler<ProductRegisteredEvent>,
+    INotificationHandler<ProductUpdatedEvent>,
+    INotificationHandler<ProductRemovedEvent>
 {
-    public class ProductEventHandler :
-        INotificationHandler<ProductRegisteredEvent>,
-        INotificationHandler<ProductUpdatedEvent>,
-        INotificationHandler<ProductRemovedEvent>
+    public Task Handle(ProductUpdatedEvent message, CancellationToken cancellationToken)
     {
-        public Task Handle(ProductUpdatedEvent message, CancellationToken cancellationToken)
-        {
-            // Send some notification e-mail
+        // Send some notification e-mail
 
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
+    }
 
-        public Task Handle(ProductRegisteredEvent message, CancellationToken cancellationToken)
-        {
-            // Send some greetings e-mail
+    public Task Handle(ProductRegisteredEvent message, CancellationToken cancellationToken)
+    {
+        // Send some greetings e-mail
 
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
+    }
 
-        public Task Handle(ProductRemovedEvent message, CancellationToken cancellationToken)
-        {
-            // Send some see you soon e-mail
+    public Task Handle(ProductRemovedEvent message, CancellationToken cancellationToken)
+    {
+        // Send some see you soon e-mail
 
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }

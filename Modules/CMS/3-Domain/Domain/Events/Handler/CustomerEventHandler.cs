@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Domain.Events.Handler
 {
-    internal class CustomerEventHandler :
+    public class CustomerEventHandler :
         INotificationHandler<CustomerRegisteredEvent>,
         INotificationHandler<CustomerUpdatedEvent>,
         INotificationHandler<CustomerRemovedEvent>

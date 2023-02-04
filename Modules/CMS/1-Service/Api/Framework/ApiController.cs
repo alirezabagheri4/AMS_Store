@@ -39,7 +39,7 @@ namespace Api.Framework
 
         protected bool IsOperationValid() => !_errors.Any();
 
-        protected void AddError(string erro) => _errors.Add(erro);
+        protected void AddError(string error) => _errors.Add(error);
 
         protected void ClearErrors() => _errors.Clear();
     }

@@ -8,52 +8,52 @@ namespace Infra.Data.Persistence.Repository
 {
     public class CustomerRepository : ICustomerRepository
     {
-        protected readonly CustomerDbContext _dbContext;
-        protected readonly DbSet<Customer> _dbSet;
+        protected readonly CustomerDbContext DbContext;
+        protected readonly DbSet<Customer> DbSet;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
         public CustomerRepository(CustomerDbContext dbContext)
         {
-            _dbContext = dbContext;
-            _dbSet = _dbContext.Set<Customer>();
+            DbContext = dbContext;
+            DbSet = DbContext.Set<Customer>();
         }
 
         public async Task<Customer> GetById(long id)
         {
-            return await _dbSet.FirstOrDefaultAsync(x => x.Id == id) ?? null;
+            return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? null;
         }
 
         public async Task<Customer> GetByNationalCode(string nationalCode)
         {
-            return await _dbSet.FirstOrDefaultAsync(x => x.NationalCode == nationalCode)
+            return await DbSet.FirstOrDefaultAsync(x => x.NationalCode == nationalCode)
                 ?? new Customer();
         }
 
         public async Task<IEnumerable<Customer>> GetAll()
         {
-            var result= await _dbSet.Include(x=>x.Address).AsNoTracking().ToListAsync();
+            var result= await DbSet.Include(x=>x.Address).AsNoTracking().ToListAsync();
             return result;
         }
 
         public void Add(Customer customer)
         {
-            _dbSet.Add(customer);
+            DbSet.Add(customer);
         }
 
         public void Update(Customer customer)
         {
-            _dbSet.Update(customer);
+            DbSet.Update(customer);
         }
 
         public void Remove(Customer customer)
         {
-            _dbSet.Remove(customer);
+            DbSet.Remove(customer);
         }
 
         public void Dispose()
         {
-            _dbContext.Dispose();
+            DbContext.Dispose();
         }
 
         public void RemoveById(long id)

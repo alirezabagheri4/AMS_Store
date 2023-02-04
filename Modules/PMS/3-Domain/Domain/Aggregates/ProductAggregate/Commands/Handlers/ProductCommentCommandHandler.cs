@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Aggregates.ProductAggregate.Commands.Command;
+﻿using Domain.Aggregates.ProductAggregate.Commands.Command;
 using Domain.Aggregates.ProductAggregate.Interfaces.IRepository;
 using Domain.Aggregates.ProductAggregate.Models;
 using Domain.Common;
@@ -12,14 +7,14 @@ using MediatR;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
 {
-    internal class ProductCommentHandler : CommandHandler,
+    public class ProductCommentCommandHandler : CommandHandler,
         IRequestHandler<RegisterNewProductCommentCommand, FluentValidation.Results.ValidationResult>,
         IRequestHandler<UpdateProductCommentCommand, FluentValidation.Results.ValidationResult>,
         IRequestHandler<RemoveProductCommentCommand, FluentValidation.Results.ValidationResult>
     {
         private readonly IProductCommentRepository _productCommentRepository;
 
-        public ProductCommentHandler(IProductCommentRepository productCommentRepository)
+        public ProductCommentCommandHandler(IProductCommentRepository productCommentRepository)
         {
             _productCommentRepository = productCommentRepository;
         }

@@ -4,18 +4,21 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Command
 {
     public class UpdateCustomerCommand : CustomerCommand
     {
-        public UpdateCustomerCommand(long Id, string FirstName, string LastName,
-            string PhoneNumber, string NationalCode, long? DetailCustomerInfoId,
-            string City, string DetailAddress, string EmailAddress)
+        private readonly long? _detailCustomerInfoId;
+
+        public UpdateCustomerCommand(long id, string firstName, string lastName,
+            string phoneNumber, string nationalCode, long? detailCustomerInfoId,
+            string city, string detailAddress, string emailAddress)
         {
-            this.Id = Id;
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.PhoneNumber = PhoneNumber;
-            this.NationalCode = NationalCode;
-            this.DetailAddress = DetailAddress;
-            this.City = City;
-            this.EmailAddress = EmailAddress;
+            _detailCustomerInfoId = detailCustomerInfoId;
+            this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.PhoneNumber = phoneNumber;
+            this.NationalCode = nationalCode;
+            this.DetailAddress = detailAddress;
+            this.City = city;
+            this.EmailAddress = emailAddress;
         }
         public override bool IsValid()
         {

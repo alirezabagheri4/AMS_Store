@@ -1,4 +1,4 @@
-﻿namespace Application.CustomerService.Queries
+﻿namespace Application.CustomerService.Query
 {
     internal class Class1
     {

@@ -4,6 +4,8 @@ using Domain.Aggregates.CustomerAggregate.Commands.Command;
 using Domain.Aggregates.CustomerAggregate.Commands.Handlers;
 using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
 using Domain.Common;
+using Domain.Events.EventModel;
+using Domain.Events.Handler;
 using FluentValidation.Results;
 using Infra.Bus;
 using Infra.Data.Persistence.Context;
@@ -24,9 +26,9 @@ namespace Infra.Ioc
             services.AddScoped<ICustomerAppService, CustomerAppServiceHandler>();
 
             // Domain - Events
-            //services.AddScoped<INotificationHandler<CustomerRegisteredEvent>, CustomerEventHandler>();
-            //services.AddScoped<INotificationHandler<CustomerUpdatedEvent>, CustomerEventHandler>();
-            //services.AddScoped<INotificationHandler<CustomerRemovedEvent>, CustomerEventHandler>();
+            services.AddScoped<INotificationHandler<CustomerRegisteredEvent>, CustomerEventHandler>();
+            services.AddScoped<INotificationHandler<CustomerUpdatedEvent>, CustomerEventHandler>();
+            services.AddScoped<INotificationHandler<CustomerRemovedEvent>, CustomerEventHandler>();
 
             // Domain - Commands
             services.AddScoped<IRequestHandler<RegisterNewCustomerCommand, ValidationResult>, CustomerCommandHandler>();

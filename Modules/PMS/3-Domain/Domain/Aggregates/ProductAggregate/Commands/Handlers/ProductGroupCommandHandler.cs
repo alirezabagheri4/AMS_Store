@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Aggregates.ProductAggregate.Commands.Command;
+﻿using Domain.Aggregates.ProductAggregate.Commands.Command;
 using Domain.Aggregates.ProductAggregate.Interfaces.IRepository;
 using Domain.Aggregates.ProductAggregate.Models;
 using Domain.Common;
@@ -12,7 +7,7 @@ using MediatR;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
 {
-    internal class ProductGroupCommandHandler : CommandHandler,
+    public class ProductGroupCommandHandler : CommandHandler,
         IRequestHandler<RegisterNewProductGroupCommand, ValidationResult>,
         IRequestHandler<UpdateProductGroupCommand, ValidationResult>,
         IRequestHandler<RemoveProductGroupCommand, ValidationResult>
@@ -24,7 +19,7 @@ namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
             _productGroupRepository = productGroupRepository;
         }
 
-        public async Task<FluentValidation.Results.ValidationResult> Handle(RegisterNewProductGroupCommand message, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(RegisterNewProductGroupCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 
@@ -41,7 +36,7 @@ namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
             return await Commit(_productGroupRepository.UnitOfWork);
         }
 
-        public async Task<FluentValidation.Results.ValidationResult> Handle(UpdateProductGroupCommand message, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(UpdateProductGroupCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 

@@ -1,32 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Framework;
+﻿using Domain.Framework;
 
-namespace Domain.Events.EventModel
+namespace Domain.Events.EventModel;
+
+public class CustomerRegisteredEvent : Event
 {
-    public class CustomerRegisteredEvent : Event
+    public CustomerRegisteredEvent(long id, string name, string lastName,
+        string phoneNumber, string nationalCode)
     {
-        public CustomerRegisteredEvent(long id, string name, string lastName,
-            string phoneNumber, string nationalCode)
-        {
-            Id = id;
-            FirstName = name;
-            LastName = lastName;
-            PhoneNumber = phoneNumber;
-            NationalCode = nationalCode;
-            AggregateId=id;
-        }
-        public long Id { get; set; }
-
-        public string FirstName { get; private set; }
-
-        public string LastName { get; private set; }
-
-        public string PhoneNumber { get; private set; }
-
-        public string NationalCode { get; private set; }
+        Id = id;
+        FirstName = name;
+        LastName = lastName;
+        PhoneNumber = phoneNumber;
+        NationalCode = nationalCode;
+        AggregateId=id;
     }
+    public long Id { get; set; }
+
+    public string FirstName { get; private set; }
+
+    public string LastName { get; private set; }
+
+    public string PhoneNumber { get; private set; }
+
+    public string NationalCode { get; private set; }
 }
