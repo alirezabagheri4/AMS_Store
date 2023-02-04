@@ -15,5 +15,12 @@ namespace Domain.Aggregates.ProductAggregate.Models
         public long CustomerId { get; set; }
 
         public string CommentText { get; set; }
+
+        public ProductComment(long productId, long customerId, string commentText)
+        {
+            this.CommentText = commentText;
+            this.CustomerId = customerId;
+            this.ProductId = productId;
+        }
     }
 }

@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Aggregates\DiscountAggregate\" />
+    <Compile Remove="Aggregates\DiscountAggregate\**" />
+    <EmbeddedResource Remove="Aggregates\DiscountAggregate\**" />
+    <None Remove="Aggregates\DiscountAggregate\**" />
   </ItemGroup>
 
   <ItemGroup>
