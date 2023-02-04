@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Aggregates.ProductAggregate.Commands.Command;
+using Domain.Aggregates.ProductAggregate.Event.EventModel;
 using Domain.Aggregates.ProductAggregate.Interfaces.IRepository;
 using Domain.Aggregates.ProductAggregate.Models;
 using Domain.Common;
@@ -30,13 +31,14 @@ namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
             var product = new Product(message.Name, message.ProductState, message.Price,
                 message.ProductDescription.ProductDescriptionText, message.ProductGroupId);
 
-            //if (await _customerRepository.GetByNationalCode(customer.NationalCode) != null)
+            //if (await _productRepository.GetByName(product.name) != null)
             //{
-            //    AddError("The customer e-mail has already been taken.");
+            //    AddError("The product Name has already been taken.");
             //    return ValidationResult;
             //}
 
-            //customer.AddDomainEvent(new CustomerRegisteredEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+            product.AddDomainEvent(new ProductRegisteredEvent(product.Id,product.Name, product.ProductState, product.Price,
+                product.ProductDescription,product.ProductGroupId));
 
             _productRepository.Add(product);
 
@@ -61,7 +63,8 @@ namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
                 }
             }
 
-            customer.AddDomainEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+            product.AddDomainEvent(new ProductUpdatedEvent(product.Id, product.Name, product.ProductState, product.Price,
+                product.ProductDescription, product.ProductGroupId));
 
             _productRepository.Update(product);
 
@@ -72,19 +75,19 @@ namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var customer = await _customerRepository.GetById(message.Id);
+            var product = await _productRepository.GetById(message.Id);
 
-            if (customer is null)
+            if (product is null)
             {
                 AddError("The customer doesn't exists.");
                 return ValidationResult;
             }
 
-            //customer.AddDomainEvent(new CustomerRemovedEvent(message.Id));
+            product.AddDomainEvent(new ProductRemovedEvent(message.Id));
 
-            _customerRepository.Remove(customer);
+            _productRepository.Remove(product);
 
-            return await Commit(_customerRepository.UnitOfWork);
+            return await Commit(_productRepository.UnitOfWork);
         }
 
         public void Dispose()

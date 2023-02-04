@@ -3,89 +3,80 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Aggregates.ProductAggregate.Commands.Command;
+using Domain.Aggregates.ProductAggregate.Interfaces.IRepository;
+using Domain.Aggregates.ProductAggregate.Models;
+using Domain.Common;
+using FluentValidation.Results;
+using MediatR;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
 {
     internal class ProductCommentHandler : CommandHandler,
-        IRequestHandler<RegisterNewCustomerCommand, FluentValidation.Results.ValidationResult>,
-        IRequestHandler<UpdateCustomerCommand, FluentValidation.Results.ValidationResult>,
-        IRequestHandler<RemoveCustomerCommand, FluentValidation.Results.ValidationResult>
+        IRequestHandler<RegisterNewProductCommentCommand, FluentValidation.Results.ValidationResult>,
+        IRequestHandler<UpdateProductCommentCommand, FluentValidation.Results.ValidationResult>,
+        IRequestHandler<RemoveProductCommentCommand, FluentValidation.Results.ValidationResult>
     {
-        private readonly ICustomerRepository _customerRepository;
+        private readonly IProductCommentRepository _productCommentRepository;
 
-        public CustomerCommandHandler(ICustomerRepository customerRepository)
+        public ProductCommentHandler(IProductCommentRepository productCommentRepository)
         {
-            _customerRepository = customerRepository;
+            _productCommentRepository = productCommentRepository;
         }
 
-        public async Task<FluentValidation.Results.ValidationResult> Handle(RegisterNewCustomerCommand message, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(RegisterNewProductCommentCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var customer = new Customer(message.LastName, message.FirstName, message.PhoneNumber, message.NationalCode);
-            var address = new Address(message.City, message.DetailAddress);
-            customer.Address = address;
-            if (await _customerRepository.GetByNationalCode(customer.NationalCode) != null)
-            {
-                AddError("The customer e-mail has already been taken.");
-                return ValidationResult;
-            }
+            var productComment = new ProductComment(message.ProductId, message.CustomerId, message.CommentText);
 
-            //customer.AddDomainEvent(new CustomerRegisteredEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+            _productCommentRepository.Add(productComment);
 
-            _customerRepository.Add(customer);
-
-            return await Commit(_customerRepository.UnitOfWork);
+            return await Commit(_productCommentRepository.UnitOfWork);
         }
 
-        public async Task<FluentValidation.Results.ValidationResult> Handle(UpdateCustomerCommand message, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(UpdateProductCommentCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var customer = new Customer(message.LastName, message.FirstName, message.PhoneNumber, message.NationalCode);
-            var address = new Address(message.City, message.DetailAddress);
-            customer.Address = address;
+            var productComment = new ProductComment(message.ProductId, message.CustomerId, message.CommentText);
 
-            var existingCustomer = await _customerRepository.GetById(customer.Id);
+            var existingCustomer = await _productCommentRepository.GetById(productComment.Id);
 
-            if (existingCustomer != null && existingCustomer.Id != customer.Id)
+            if (existingCustomer != null && existingCustomer.Id != productComment.Id)
             {
-                if (!existingCustomer.Equals(customer))
+                if (!existingCustomer.Equals(productComment))
                 {
-                    AddError("The customer e-mail has already been taken.");
+                    AddError("The customer productComment has already been taken.");
                     return ValidationResult;
                 }
             }
 
-            //customer.AddDomainEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+            _productCommentRepository.Update(productComment);
 
-            _customerRepository.Update(customer);
-
-            return await Commit(_customerRepository.UnitOfWork);
+            return await Commit(_productCommentRepository.UnitOfWork);
         }
 
-        public async Task<FluentValidation.Results.ValidationResult> Handle(RemoveCustomerCommand message, CancellationToken cancellationToken)
+        public async Task<ValidationResult> Handle(RemoveProductCommentCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var customer = await _customerRepository.GetById(message.Id);
+            var product = await _productCommentRepository.GetById(message.Id);
 
-            if (customer is null)
+            if (product is null)
             {
-                AddError("The customer doesn't exists.");
+                AddError("The product doesn't exists.");
                 return ValidationResult;
             }
 
-            //customer.AddDomainEvent(new CustomerRemovedEvent(message.Id));
+            _productCommentRepository.Remove(product);
 
-            _customerRepository.Remove(customer);
-
-            return await Commit(_customerRepository.UnitOfWork);
+            return await Commit(_productCommentRepository.UnitOfWork);
         }
 
         public void Dispose()
         {
-            _customerRepository.Dispose();
+            _productCommentRepository.Dispose();
         }
     }
 }

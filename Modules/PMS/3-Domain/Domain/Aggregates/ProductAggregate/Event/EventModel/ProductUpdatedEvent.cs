@@ -10,7 +10,7 @@ namespace Domain.Aggregates.ProductAggregate.Event.EventModel
 {
     public class ProductUpdatedEvent : Framework.Event
     {
-        public ProductUpdatedEvent(string name, eProductState productState, long price,
+        public ProductUpdatedEvent(long id, string name, eProductState productState, long price,
             ProductDescription description, long productGroup)
         {
             Name = name;
@@ -18,7 +18,10 @@ namespace Domain.Aggregates.ProductAggregate.Event.EventModel
             Price = price;
             ProductDescription = description;
             ProductGroupId = productGroup;
+            Id = id;
         }
+        public long Id { get; set; }
+
         public string Name { get; set; }
 
         public eProductState ProductState { get; set; }
