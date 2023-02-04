@@ -7,16 +7,16 @@ using Domain.Aggregates.ProductAggregate.Commands.Validations;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Command
 {
-    public class RemoveProductCommand:ProductCommand
+    public class RemoveProductCommentCommand:ProductCommentCommand
     {
-        public RemoveProductCommand(long productId)
+        public RemoveProductCommentCommand(long Id)
         {
             this.Id = Id;
         }
 
         public override bool IsValid()
         {
-            ValidationResult = new RemoveProductValidation().Validate(this);
+            ValidationResult = new RemoveProductCommentValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

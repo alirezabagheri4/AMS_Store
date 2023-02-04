@@ -7,9 +7,9 @@ using Domain.Aggregates.ProductAggregate.Commands.Validations;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Command
 {
-    public class RegisterNewProductCommentCommand : ProductCommentCommand
+    public class UpdateProductCommentCommand:ProductCommentCommand
     {
-        public RegisterNewProductCommentCommand(long productId, long customerId, string commentText)
+        public UpdateProductCommentCommand(long productId, long customerId, string commentText)
         {
             this.CustomerId = customerId;
             this.ProductId = productId;
@@ -18,7 +18,7 @@ namespace Domain.Aggregates.ProductAggregate.Commands.Command
 
         public override bool IsValid()
         {
-            ValidationResult = new RegisterNewProductCommentValidation().Validate(this);
+            ValidationResult = new UpdateProductCommentValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

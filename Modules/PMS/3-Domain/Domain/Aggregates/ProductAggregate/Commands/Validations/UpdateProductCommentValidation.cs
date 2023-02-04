@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Validations
 {
-    internal class UpdateProductCommentValidation
+    public class UpdateProductCommentValidation
     {
     }
 }
