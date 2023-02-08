@@ -1,10 +1,8 @@
-﻿
-
-using Infra.Data.Data.Context;
-using Infra.Data.Data.Framework;
+﻿using Infra.Data.Persistence.Context;
+using Infra.Data.Persistence.Interceptors;
 using Microsoft.EntityFrameworkCore;
 
-namespace Api.Configurations
+namespace Api.ConfigurationsExtensions
 {
     public static class DatabaseConfig
     {

@@ -1,4 +1,4 @@
-﻿using Api.Configurations;
+﻿using Api.ConfigurationsExtensions;
 using MediatR;
 
 namespace Api.Extensions

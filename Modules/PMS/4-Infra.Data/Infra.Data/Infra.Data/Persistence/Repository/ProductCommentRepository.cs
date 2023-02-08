@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Aggregates.ProductAggregate.Interfaces.IRepository;
+﻿using Domain.Aggregates.ProductAggregate.Interfaces.IRepository;
 using Domain.Aggregates.ProductAggregate.Models;
 using Domain.Common;
 using Infra.Data.Persistence.Context;
@@ -11,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository
 {
-    internal class ProductCommentRepository : IProductCommentRepository
+    public class ProductCommentRepository : IProductCommentRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductComment> DbSet;

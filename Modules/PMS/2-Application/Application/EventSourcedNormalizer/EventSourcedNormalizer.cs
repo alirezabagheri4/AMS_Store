@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Aggregates.ProductAggregate.Commands.Handlers
+namespace Application.EventSourcedNormalizer
 {
-    internal class ProductCommentHandler
+    public class EventSourcedNormalizer
     {
     }
 }

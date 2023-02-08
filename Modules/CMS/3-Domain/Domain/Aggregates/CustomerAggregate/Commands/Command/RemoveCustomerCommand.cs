@@ -1,4 +1,4 @@
-﻿using Domain.CustomerAggregate.Commands.Validations;
+﻿using Domain.Aggregates.CustomerAggregate.Commands.Validations;
 
 namespace Domain.Aggregates.CustomerAggregate.Commands.Command
 {

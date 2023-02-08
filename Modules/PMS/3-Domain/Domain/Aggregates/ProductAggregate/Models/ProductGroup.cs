@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Aggregates.ProductAggregate.Interfaces;
+﻿using Domain.Aggregates.ProductAggregate.Interfaces;
 using Domain.Framework;
 
 namespace Domain.Aggregates.ProductAggregate.Models
@@ -15,5 +10,11 @@ namespace Domain.Aggregates.ProductAggregate.Models
         public string Description { get; set; }
 
         public List<Product> Products { get; set; }
+
+        public ProductGroup(string groupName,string description)
+        {
+            GroupName=groupName;
+            Description=description;
+        }
     }
 }

@@ -1,8 +1,9 @@
 ﻿using Domain.Common;
 using MediatR;
-using Domain.CustomerAggregate.Models;
 using Domain.Aggregates.CustomerAggregate.Commands.Command;
 using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
+using Domain.Aggregates.CustomerAggregate.Models;
+using Domain.Events.EventModel;
 
 namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
 {
@@ -27,11 +28,12 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
             customer.Address = address;
             if (await _customerRepository.GetByNationalCode(customer.NationalCode) != null)
             {
-                AddError("The customer e-mail has already been taken.");
+                AddError("The customer NationalCode has already been taken.");
                 return ValidationResult;
             }
 
-            //customer.AddDomainEvent(new CustomerRegisteredEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
+            customer.AddDomainEvent(new CustomerRegisteredEvent(customer.Id, customer.FirstName, 
+                customer.LastName, customer.PhoneNumber,customer.NationalCode));
 
             _customerRepository.Add(customer);
 
@@ -52,13 +54,13 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
             {
                 if (!existingCustomer.Equals(customer))
                 {
-                    AddError("The customer e-mail has already been taken.");
+                    AddError("The customer .. has already been taken.");
                     return ValidationResult;
                 }
             }
 
-            //customer.AddDomainEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
-
+            customer.AddDomainEvent(new CustomerUpdatedEvent(customer.Id, customer.FirstName,
+                customer.LastName, customer.PhoneNumber, customer.NationalCode));
             _customerRepository.Update(customer);
 
             return await Commit(_customerRepository.UnitOfWork);
@@ -76,7 +78,7 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
                 return ValidationResult;
             }
 
-            //customer.AddDomainEvent(new CustomerRemovedEvent(message.Id));
+            customer.AddDomainEvent(new CustomerRemovedEvent(message.Id));
 
             _customerRepository.Remove(customer);
 

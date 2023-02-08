@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Aggregates.ProductAggregate.@enum;
 using Domain.Aggregates.ProductAggregate.Interfaces;
 using Domain.Framework;
 
@@ -21,5 +17,15 @@ namespace Domain.Aggregates.ProductAggregate.Models
         public ProductDescription ProductDescription { get; set; }
 
         public ProductGroup ProductGroup { get; set; }
+        public long ProductGroupId { get; set; }
+
+        public Product(string productName,eProductState productState,long price,string productDescription,long productGroup)
+        {
+            this.Name=productName;
+            this.ProductState=productState;
+            this.Price=price;
+            this.ProductDescription = new  ProductDescription(){ProductDescriptionText = productDescription};
+            this.ProductGroupId = productGroup;
+        }
     }
 }

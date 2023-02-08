@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Aggregates\DiscountAggregate\" />
+    <Compile Remove="Aggregates\DiscountAggregate\**" />
+    <EmbeddedResource Remove="Aggregates\DiscountAggregate\**" />
+    <None Remove="Aggregates\DiscountAggregate\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
+    <PackageReference Include="MediatR" Version="11.1.0" />
   </ItemGroup>
 
 </Project>

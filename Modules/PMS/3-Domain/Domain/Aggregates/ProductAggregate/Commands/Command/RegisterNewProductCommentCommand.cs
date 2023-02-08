@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Aggregates.ProductAggregate.Commands.Validations;
 
 namespace Domain.Aggregates.ProductAggregate.Commands.Command
 {
-    internal class RegisterNewProductCommentCommand
+    public class RegisterNewProductCommentCommand : ProductCommentCommand
     {
+        public RegisterNewProductCommentCommand(long productId, long customerId, string commentText)
+        {
+            this.CustomerId = customerId;
+            this.ProductId = productId;
+            this.CommentText = commentText;
+        }
+
+        public override bool IsValid()
+        {
+            ValidationResult = new RegisterNewProductCommentValidation().Validate(this);
+            return ValidationResult.IsValid;
+        }
     }
 }
