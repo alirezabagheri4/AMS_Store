@@ -6,34 +6,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository
 {
-    public class CustomerRepository : ICustomerRepository
+    public class CustomerWRepository : ICustomerRepository
     {
         protected readonly CustomerDbContext DbContext;
         protected readonly DbSet<Customer> DbSet;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        public CustomerRepository(CustomerDbContext dbContext)
+        public CustomerWRepository(CustomerDbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<Customer>();
-        }
-
-        public async Task<Customer> GetById(long id)
-        {
-            return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? null;
-        }
-
-        public async Task<Customer> GetByNationalCode(string nationalCode)
-        {
-            return await DbSet.FirstOrDefaultAsync(x => x.NationalCode == nationalCode)
-                ?? new Customer();
-        }
-
-        public async Task<IEnumerable<Customer>> GetAll()
-        {
-            var result= await DbSet.Include(x=>x.Address).AsNoTracking().ToListAsync();
-            return result;
         }
 
         public void Add(Customer customer)
@@ -60,5 +43,22 @@ namespace Infra.Data.Persistence.Repository
         {
             throw new NotImplementedException();
         }
+
+        //public async Task<Customer> GetById(long id)
+        //{
+        //    return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? null;
+        //}
+
+        //public async Task<Customer> GetByNationalCode(string nationalCode)
+        //{
+        //    return await DbSet.FirstOrDefaultAsync(x => x.NationalCode == nationalCode)
+        //        ?? new Customer();
+        //}
+
+        //public async Task<IEnumerable<Customer>> GetAll()
+        //{
+        //    var result = await DbSet.Include(x => x.Address).AsNoTracking().ToListAsync();
+        //    return result;
+        //}
     }
 }

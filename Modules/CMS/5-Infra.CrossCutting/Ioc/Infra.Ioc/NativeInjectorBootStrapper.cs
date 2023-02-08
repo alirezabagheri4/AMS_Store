@@ -9,7 +9,8 @@ using Domain.Events.Handler;
 using FluentValidation.Results;
 using Infra.Bus;
 using Infra.Data.Persistence.Context;
-using Infra.Data.Persistence.Repository;
+using Infra.Data.Persistence.Context.DapperContext;
+using Infra.Data.Persistence.Repository.WriteRepository;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -38,6 +39,8 @@ namespace Infra.Ioc
             // Infra - Data
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<CustomerDbContext>();
+
+            services.AddSingleton<CustomerDapperContext>();
 
             // Infra - Data EventSourcing
             //services.AddScoped<IEventStoreRepository, EventStoreSqlRepository>();

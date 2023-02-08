@@ -11,11 +11,11 @@ namespace Application.CustomerService.Command
     public class CustomerAppServiceHandler : ICustomerAppService
     {
         private readonly IMapper _mapper;
-        private readonly ICustomerRepository _customerRepository;
+        private readonly ICustomerCommandRepository _customerRepository;
         private readonly IMediatorHandler _mediator;
 
         public CustomerAppServiceHandler(IMapper mapper,
-            ICustomerRepository customerRepository,
+            ICustomerCommandRepository customerRepository,
             IMediatorHandler mediator)
         {
             _mapper = mapper;
