@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="AutoMapper\Dto\" />
+    <Folder Include="AutoMapper\ProductDescription\" />
+    <Folder Include="AutoMapper\ProductGroup\" />
+    <Folder Include="CustomerService\" />
+    <Folder Include="EventSourceNormalizer\" />
+    <Folder Include="Interface\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+
 </Project>

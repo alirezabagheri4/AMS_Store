@@ -4,9 +4,9 @@ using Domain.Aggregates.CustomerAggregate.Models;
 
 namespace Application.AutoMapper
 {
-    public class DomainToViewModelMappingProfile : Profile
+    public class CustomerDomainToViewModelMappingProfile : Profile
     {
-        public DomainToViewModelMappingProfile()
+        public CustomerDomainToViewModelMappingProfile()
         {
             CreateMap<Customer, CustomerViewModel>();
         }

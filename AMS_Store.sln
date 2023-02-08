@@ -93,6 +93,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ioc", "Ioc", "{2BB48018-36B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Ioc", "Modules\PMS\5-Infra.CrossCutting\Infra.Ioc\Infra.Ioc.csproj", "{14313592-6EA7-450B-A965-7C90AE06F36C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Modules\PMS\2-Application\Application\Application.csproj", "{27D58BE9-F3E9-4E29-A9D4-B1E4015EB18A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{14313592-6EA7-450B-A965-7C90AE06F36C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14313592-6EA7-450B-A965-7C90AE06F36C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14313592-6EA7-450B-A965-7C90AE06F36C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27D58BE9-F3E9-4E29-A9D4-B1E4015EB18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27D58BE9-F3E9-4E29-A9D4-B1E4015EB18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27D58BE9-F3E9-4E29-A9D4-B1E4015EB18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27D58BE9-F3E9-4E29-A9D4-B1E4015EB18A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,6 +213,7 @@ Global
 		{7B00D9AA-3E51-43CA-BAC5-62C875F5F90B} = {D9592328-BB81-4372-AD41-70F0CD282C85}
 		{2BB48018-36BD-46FC-934E-D9D1C8D19CB7} = {750A498C-AF94-45A1-9586-2171D91D4A54}
 		{14313592-6EA7-450B-A965-7C90AE06F36C} = {750A498C-AF94-45A1-9586-2171D91D4A54}
+		{27D58BE9-F3E9-4E29-A9D4-B1E4015EB18A} = {959FA3C6-B32A-4519-8299-C2CE32566492}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DAE9B30F-EEC9-4F61-9CA6-8E096980F57D}

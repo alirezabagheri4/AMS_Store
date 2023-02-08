@@ -2,9 +2,9 @@
 
 namespace Application.AutoMapper
 {
-    public class ViewModelToDomainMappingProfile : Profile
+    public class CustomerViewModelToDomainMappingProfile : Profile
     {
-        public ViewModelToDomainMappingProfile()
+        public CustomerViewModelToDomainMappingProfile()
         {
             //CreateMap<CustomerViewModel, AddCustomerCommand>()
             //    .ConstructUsing(c => new RegisterNewCustomerCommand(c.Name, c.Email, c.BirthDate));
