@@ -8,8 +8,5 @@ namespace Domain.Aggregates.CustomerAggregate.Interfaces.IRepository
         void Update(Customer customer);
         void Remove(Customer customer);
         void RemoveById(long id);
-        //Task<Customer> GetByNationalCode(string nationalCode);
-        //Task<Customer> GetById(long id);
-        //Task<IEnumerable<Customer>> GetAll();
     }
 }

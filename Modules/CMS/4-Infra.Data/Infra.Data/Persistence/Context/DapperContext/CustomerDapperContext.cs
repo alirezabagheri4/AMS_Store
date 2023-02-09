@@ -4,12 +4,14 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Common;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Infra.Data.Persistence.Context.DapperContext
 {
-    public class CustomerDapperContext
+    public class CustomerDapperContext:DbContext
     {
         private readonly string? _connectionString;
         public CustomerDapperContext(IConfiguration configuration)

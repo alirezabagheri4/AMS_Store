@@ -3,27 +3,56 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
 using Domain.Aggregates.CustomerAggregate.Models;
 using Domain.Common;
 using Infra.Data.Persistence.Context;
+using Infra.Data.Persistence.Context.DapperContext;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository
 {
-    public class CustomerReadRepository : ICustomerRepository
+    //TODO https://ubiq.co/database-blog/how-to-speed-up-sql-queries/
+    //TODO Bad Performance
+    public class CustomerQueryRepository : ICustomerQueryRepository
     {
-        protected readonly CustomerDbContext DbContext;
-        protected readonly DbSet<Customer> DbSet;
+        protected readonly CustomerDapperContext DbContext;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        public CustomerReadRepository(CustomerDbContext dbContext)
+        public CustomerQueryRepository(CustomerDapperContext dbContext)
         {
             DbContext = dbContext;
-            DbSet = DbContext.Set<Customer>();
         }
 
 
+        public void Dispose()
+        {
+            DbContext.Dispose();
+        }
+
+        public Task<Customer> GetByNationalCode(string nationalCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Customer> GetById(long id)
+        {
+            var query = "SELECT * FROM cms.Customer WHERE Id = @Id";
+            using (var connection = DbContext.CreateConnection())
+            {
+                var company = await connection.QuerySingleOrDefaultAsync<Customer>(query, new { id });
+                return company;
+            }
+        }
+
+        public async Task<IEnumerable<Customer>> GetAll()
+        {
+            const string query = "SELECT * FROM cms.Customer ";
+            using var connection = DbContext.CreateConnection();
+            var companies = await connection.QueryAsync<Customer>(query);
+            return companies.AsEnumerable();
+        }
     }
 }
