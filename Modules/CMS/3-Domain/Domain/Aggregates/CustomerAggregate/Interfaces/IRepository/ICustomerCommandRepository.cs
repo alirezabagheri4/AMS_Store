@@ -2,7 +2,7 @@
 
 namespace Domain.Aggregates.CustomerAggregate.Interfaces.IRepository
 {
-    public interface ICustomerRepository : IRepository<Customer>
+    public interface ICustomerCommandRepository : IRepository<Customer>
     {
         void Add(Customer customer);
         void Update(Customer customer);

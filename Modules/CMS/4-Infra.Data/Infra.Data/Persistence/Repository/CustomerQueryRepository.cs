@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
 using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
 using Domain.Aggregates.CustomerAggregate.Models;
 using Domain.Common;
-using Infra.Data.Persistence.Context;
 using Infra.Data.Persistence.Context.DapperContext;
-using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository
 {

@@ -11,26 +11,29 @@ namespace Application.CustomerService.Command
     public class CustomerAppServiceHandler : ICustomerAppService
     {
         private readonly IMapper _mapper;
-        private readonly ICustomerCommandRepository _customerRepository;
+        private readonly ICustomerCommandRepository _customerCommandRepository;
+        private readonly ICustomerQueryRepository _customerQueryRepository;
         private readonly IMediatorHandler _mediator;
 
         public CustomerAppServiceHandler(IMapper mapper,
-            ICustomerCommandRepository customerRepository,
+            ICustomerCommandRepository customerCommandRepository,
+            ICustomerQueryRepository customerQueryRepository,
             IMediatorHandler mediator)
         {
             _mapper = mapper;
-            _customerRepository = customerRepository;
+            _customerCommandRepository = customerCommandRepository;
             _mediator = mediator;
+            _customerQueryRepository= customerQueryRepository;
         }
 
         public async Task<IEnumerable<CustomerViewModel>> GetAll()
         {
-            return _mapper.Map<IEnumerable<CustomerViewModel>>(await _customerRepository.GetAll());
+            return _mapper.Map<IEnumerable<CustomerViewModel>>(await _customerQueryRepository.GetAll());
         }
 
         public async Task<CustomerViewModel> GetById(long id)
         {
-            return _mapper.Map<CustomerViewModel>(await _customerRepository.GetById(id));
+            return _mapper.Map<CustomerViewModel>(await _customerQueryRepository.GetById(id));
         }
 
         public async Task<ValidationResult> Register(CustomerViewModel customerViewModel)
