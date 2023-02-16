@@ -1,5 +1,4 @@
 ﻿using Domain.Common;
-//using Domain.Events;
 using Domain.Framework;
 using FluentValidation.Results;
 using MediatR;
@@ -18,7 +17,7 @@ namespace Infra.Bus
 
         public async Task PublishEvent<T>(T @event) where T : Event
         {
-            //if ....
+            //if event ....
             //    _eventStore?.Save(@event);
 
             await _mediator.Publish(@event);

@@ -16,5 +16,9 @@ namespace Domain.Aggregates.ProductAggregate.Models
             GroupName=groupName;
             Description=description;
         }
+
+        public ProductGroup()
+        {
+        }
     }
 }

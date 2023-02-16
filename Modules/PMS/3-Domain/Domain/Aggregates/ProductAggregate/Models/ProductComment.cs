@@ -11,6 +11,11 @@ namespace Domain.Aggregates.ProductAggregate.Models
 
         public string CommentText { get; set; }
 
+        public ProductComment()
+        {
+
+        }
+
         public ProductComment(long productId, long customerId, string commentText)
         {
             this.CommentText = commentText;

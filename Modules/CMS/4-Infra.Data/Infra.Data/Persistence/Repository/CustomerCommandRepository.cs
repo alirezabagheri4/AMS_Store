@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository
 {
-    public class CustomerWRepository : ICustomerRepository
+    public class CustomerCommandRepository : ICustomerCommandRepository
     {
         protected readonly CustomerDbContext DbContext;
         protected readonly DbSet<Customer> DbSet;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        public CustomerWRepository(CustomerDbContext dbContext)
+        public CustomerCommandRepository(CustomerDbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<Customer>();

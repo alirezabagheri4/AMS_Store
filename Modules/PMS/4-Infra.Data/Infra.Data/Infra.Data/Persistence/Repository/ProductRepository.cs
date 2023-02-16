@@ -24,6 +24,11 @@ namespace Infra.Data.Persistence.Repository
             return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? new Product();
         }
 
+        public Task<IEnumerable<Product>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Add(Product customer)
         {
             DbSet.Add(customer);

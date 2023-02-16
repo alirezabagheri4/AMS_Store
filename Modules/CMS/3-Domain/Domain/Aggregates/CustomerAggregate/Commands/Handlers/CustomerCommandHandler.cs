@@ -1,8 +1,8 @@
 ﻿using Domain.Common;
 using MediatR;
-using Domain.CustomerAggregate.Models;
 using Domain.Aggregates.CustomerAggregate.Commands.Command;
 using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
+using Domain.Aggregates.CustomerAggregate.Models;
 
 namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
 {
@@ -11,11 +11,13 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
         IRequestHandler<UpdateCustomerCommand, FluentValidation.Results.ValidationResult>,
         IRequestHandler<RemoveCustomerCommand, FluentValidation.Results.ValidationResult>
     {
-        private readonly ICustomerCommandRepository _customerRepository;
+        private readonly ICustomerCommandRepository _customerCommandRepository;
+        private readonly ICustomerQueryRepository _customerQueryRepository;
 
-        public CustomerCommandHandler(ICustomerCommandRepository customerRepository)
+        public CustomerCommandHandler(ICustomerCommandRepository customerCommandRepository,ICustomerQueryRepository customerQueryRepository)
         {
-            _customerRepository = customerRepository;
+            _customerCommandRepository = customerCommandRepository;
+            _customerQueryRepository = customerQueryRepository;
         }
 
         public async Task<FluentValidation.Results.ValidationResult> Handle(RegisterNewCustomerCommand message, CancellationToken cancellationToken)
@@ -25,7 +27,7 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
             var customer = new Customer(message.LastName, message.FirstName, message.PhoneNumber, message.NationalCode);
             var address = new Address(message.City, message.DetailAddress);
             customer.Address = address;
-            if (await _customerRepository.GetByNationalCode(customer.NationalCode) != null)
+            if (await _customerQueryRepository.GetByNationalCode(customer.NationalCode) != null)
             {
                 AddError("The customer e-mail has already been taken.");
                 return ValidationResult;
@@ -33,9 +35,9 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
 
             //customer.AddDomainEvent(new CustomerRegisteredEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
 
-            _customerRepository.Add(customer);
+            _customerCommandRepository.Add(customer);
 
-            return await Commit(_customerRepository.UnitOfWork);
+            return await Commit(_customerCommandRepository.UnitOfWork);
         }
 
         public async Task<FluentValidation.Results.ValidationResult> Handle(UpdateCustomerCommand message, CancellationToken cancellationToken)
@@ -46,7 +48,7 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
             var address = new Address(message.City, message.DetailAddress);
             customer.Address = address;
 
-            var existingCustomer = await _customerRepository.GetById(customer.Id);
+            var existingCustomer = await _customerQueryRepository.GetById(customer.Id);
 
             if (existingCustomer != null && existingCustomer.Id != customer.Id)
             {
@@ -59,16 +61,16 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
 
             //customer.AddDomainEvent(new CustomerUpdatedEvent(customer.Id, customer.Name, customer.Email, customer.BirthDate));
 
-            _customerRepository.Update(customer);
+            _customerCommandRepository.Update(customer);
 
-            return await Commit(_customerRepository.UnitOfWork);
+            return await Commit(_customerCommandRepository.UnitOfWork);
         }
 
         public async Task<FluentValidation.Results.ValidationResult> Handle(RemoveCustomerCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var customer = await _customerRepository.GetById(message.Id);
+            var customer = await _customerQueryRepository.GetById(message.Id);
 
             if (customer is null)
             {
@@ -78,14 +80,15 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
 
             //customer.AddDomainEvent(new CustomerRemovedEvent(message.Id));
 
-            _customerRepository.Remove(customer);
+            _customerCommandRepository.Remove(customer);
 
-            return await Commit(_customerRepository.UnitOfWork);
+            return await Commit(_customerCommandRepository.UnitOfWork);
         }
 
         public void Dispose()
         {
-            _customerRepository.Dispose();
+            _customerCommandRepository.Dispose();
+            _customerQueryRepository.Dispose();
         }
     }
 }

@@ -24,6 +24,11 @@ namespace Infra.Data.Persistence.Repository
             return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? new ProductDescription();
         }
 
+        public Task<IEnumerable<ProductDescription>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ProductDescription> GetByProductId(long productId)
         {
             return await DbSet.FirstOrDefaultAsync(x => x.ProductId == productId) ?? new ProductDescription();

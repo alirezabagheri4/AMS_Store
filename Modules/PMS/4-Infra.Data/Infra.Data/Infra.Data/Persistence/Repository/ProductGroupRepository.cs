@@ -24,6 +24,11 @@ namespace Infra.Data.Persistence.Repository
             return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? new ProductGroup();
         }
 
+        public Task<IEnumerable<ProductGroup>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ProductGroup> GetByProductGroupName(string groupName)
         {
             return await DbSet.FirstOrDefaultAsync(x => EF.Functions.Like(x.GroupName, groupName)) ?? new ProductGroup();

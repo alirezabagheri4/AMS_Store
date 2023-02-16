@@ -27,5 +27,9 @@ namespace Domain.Aggregates.ProductAggregate.Models
             this.ProductDescription = new  ProductDescription(){ProductDescriptionText = productDescription};
             this.ProductGroupId = productGroup;
         }
+
+        public Product()
+        {
+        }
     }
 }

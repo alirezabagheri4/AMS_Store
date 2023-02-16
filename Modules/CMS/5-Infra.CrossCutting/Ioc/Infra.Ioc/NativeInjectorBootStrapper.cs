@@ -10,7 +10,7 @@ using FluentValidation.Results;
 using Infra.Bus;
 using Infra.Data.Persistence.Context;
 using Infra.Data.Persistence.Context.DapperContext;
-using Infra.Data.Persistence.Repository.WriteRepository;
+using Infra.Data.Persistence.Repository;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -37,7 +37,8 @@ namespace Infra.Ioc
             services.AddScoped<IRequestHandler<RemoveCustomerCommand, ValidationResult>, CustomerCommandHandler>();
 
             // Infra - Data
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerQueryRepository, CustomerQueryRepository>();
+            services.AddScoped<ICustomerCommandRepository, ICustomerCommandRepository>();
             services.AddScoped<CustomerDbContext>();
 
             services.AddSingleton<CustomerDapperContext>();
