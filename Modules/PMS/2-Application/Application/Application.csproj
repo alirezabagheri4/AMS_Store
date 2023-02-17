@@ -10,4 +10,12 @@
     <Folder Include="AutoMapper\DtoMapp\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\3-Domain\Domain\Domain.csproj" />
+  </ItemGroup>
+
 </Project>

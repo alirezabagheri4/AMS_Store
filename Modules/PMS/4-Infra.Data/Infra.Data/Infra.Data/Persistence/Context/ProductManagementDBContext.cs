@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using Domain.Aggregates.ProductAggregate.Models;
+using Domain.Aggregates.Product.Models;
 using Domain.Common;
 using Domain.Framework;
 

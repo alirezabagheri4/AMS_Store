@@ -1,5 +1,5 @@
-﻿using Domain.Aggregates.ProductAggregate.@enum;
-using Domain.Aggregates.ProductAggregate.Models;
+﻿using Domain.Aggregates.Product.@enum;
+using Domain.Aggregates.Product.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

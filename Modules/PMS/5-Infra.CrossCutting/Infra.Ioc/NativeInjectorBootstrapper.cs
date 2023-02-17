@@ -1,8 +1,12 @@
-﻿using Domain.Aggregates.ProductAggregate.Commands.Command;
-using Domain.Aggregates.ProductAggregate.Commands.Handlers;
-using Domain.Aggregates.ProductAggregate.Event.EventHandler;
-using Domain.Aggregates.ProductAggregate.Event.EventModel;
-using Domain.Aggregates.ProductAggregate.Interfaces.IRepository;
+﻿using Domain.Aggregates.Product.Commands.Command;
+using Domain.Aggregates.Product.Commands.Handlers;
+using Domain.Aggregates.Product.Event.EventHandler;
+using Domain.Aggregates.Product.Event.EventModel;
+using Domain.Aggregates.Product.Interfaces.IRepository;
+using Domain.Aggregates.ProductComment.Commands.Command;
+using Domain.Aggregates.ProductComment.Commands.Handler;
+using Domain.Aggregates.ProductGroup.Commands.Command;
+using Domain.Aggregates.ProductGroup.Commands.Handler;
 using Domain.Common;
 using FluentValidation.Results;
 using Infra.Bus;
@@ -43,8 +47,8 @@ namespace Infra.Ioc
 
             // Infra - Data
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductGroupRepository, ProductGroupRepository>();
-            services.AddScoped<IProductCommentRepository, ProductCommentRepository>();
+            services.AddScoped<IProductGroupCommandRepository, ProductGroupRepository>();
+            services.AddScoped<IProductCommentQueryRepository, ProductCommentRepository>();
             services.AddScoped<IProductDescriptionRepository, IProductDescriptionRepository>();
 
             services.AddScoped<ProductManagementDbContext>();
