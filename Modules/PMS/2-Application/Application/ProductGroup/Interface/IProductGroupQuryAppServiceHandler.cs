@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.ProductGroup.Interface
 {
-    internal interface IProductGroupQueryAppServiceHandler
+    public interface IProductGroupQueryAppServiceHandler
     {
     }
 }

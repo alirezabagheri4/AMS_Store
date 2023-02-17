@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.ProductComment.Interface
 {
-    internal interface IProductCommentQueryAppServiceHandler
+    public interface IProductCommentQueryAppServiceHandler
     {
     }
 }

@@ -1,62 +1,64 @@
-﻿using Application.Interface;
+﻿using Api.Framework;
+using Application.ProductGroup.Interface;
 using Application.ViewModel;
+using Domain.Aggregates.ProductAggregate.Commands.Command;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers
+namespace Api.ProductGroup
 {
     [Route("PMS-ProductGroup")]
     public class ProductGroupController : ApiController
     {
-        private readonly ICustomerCommandAppServiceHandler _customerCommandAppService;
-        private readonly ICustomerQueryAppServiceHandler _customerQueryAppService;
+        private readonly IProductGroupCommandAppServiceHandler _productGroupCommandAppService;
+        private readonly IProductGroupQueryAppServiceHandler _productGroupQueryAppService;
 
-        public CustomerController(ICustomerCommandAppServiceHandler customerCommandAppService,
-            ICustomerQueryAppServiceHandler customerQueryAppService)
+        public ProductGroupController(IProductGroupCommandAppServiceHandler productGroupCommandAppService,
+            IProductGroupQueryAppServiceHandler productGroupQueryAppService)
         {
-            _customerCommandAppService = customerCommandAppService;
-            _customerQueryAppService = customerQueryAppService;
+            _productGroupCommandAppService = productGroupCommandAppService;
+            _productGroupQueryAppService = productGroupQueryAppService;
         }
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IEnumerable<CustomerViewModel>> Get(RegisterNewCustomerCommand customer)
+        public async Task<IEnumerable<ProductGroupViewModel>> Get(RegisterNewProductGroupCommand productGroup)
         {
-            var result = await _customerQueryAppService.GetAll();
+            var result = await _productGroupQueryAppService.GetAll();
             return result;
         }
 
         [AllowAnonymous]
         [HttpGet("{id:guid}")]
-        public async Task<CustomerViewModel> Get(long id)
+        public async Task<ProductGroupViewModel> Get(long id)
         {
-            var result = await _customerQueryAppService.GetById(id);
+            var result = await _productGroupQueryAppService.GetById(id);
             return result;
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CustomerViewModel customerViewModel)
+        public async Task<IActionResult> Post([FromBody] ProductGroupViewModel productGroupViewModel)
         {
             return !ModelState.IsValid
                 ? CustomResponse(ModelState)
-                : CustomResponse(await _customerCommandAppService.Register(customerViewModel));
+                : CustomResponse(await _productGroupCommandAppService.Register(productGroupViewModel));
         }
 
         [AllowAnonymous]
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] CustomerViewModel customerViewModel)
+        public async Task<IActionResult> Put([FromBody] ProductGroupViewModel productGroupViewModel)
         {
             return !ModelState.IsValid
                 ? CustomResponse(ModelState)
-                : CustomResponse(await _customerCommandAppService.Update(customerViewModel));
+                : CustomResponse(await _productGroupCommandAppService.Update(productGroupViewModel));
         }
 
         [AllowAnonymous]
         [HttpDelete]
         public async Task<IActionResult> Delete(long id)
         {
-            return CustomResponse(await _customerCommandAppService.Remove(id));
+            return CustomResponse(await _productGroupCommandAppService.Remove(id));
         }
     }
 }
