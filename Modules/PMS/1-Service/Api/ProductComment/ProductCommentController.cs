@@ -1,4 +1,5 @@
-﻿using Application.Interface;
+﻿using Api.Framework;
+using Application.Interface;
 using Application.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,8 +9,8 @@ namespace Api.Controllers
     [Route("PMS/ProductComment")]
     public class ProductCommentController : ApiController
     {
-        private readonly ICustomerCommandAppServiceHandler _customerCommandAppService;
-        private readonly ICustomerQueryAppServiceHandler _customerQueryAppService;
+        private readonly IProductCommentCommandAppServiceHandler _ProductCommentCommandAppService;
+        private readonly IProductCommentQueryAppServiceHandler _ProductCommandQueryAppService;
 
         public CustomerController(ICustomerCommandAppServiceHandler customerCommandAppService,
             ICustomerQueryAppServiceHandler customerQueryAppService)

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Interface
+namespace Application.ProductGroup.Interface
 {
-    public interface IProductCommandAppServiceHandler
+    internal interface IProductGroupQueryAppServiceHandler
     {
     }
 }
