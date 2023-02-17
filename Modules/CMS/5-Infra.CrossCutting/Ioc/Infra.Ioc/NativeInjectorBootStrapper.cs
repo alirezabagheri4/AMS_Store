@@ -38,7 +38,7 @@ namespace Infra.Ioc
 
             // Infra - Data
             services.AddScoped<ICustomerQueryRepository, CustomerQueryRepository>();
-            services.AddScoped<ICustomerCommandRepository, ICustomerCommandRepository>();
+            services.AddScoped<ICustomerCommandRepository, CustomerCommandRepository>();
             services.AddScoped<CustomerDbContext>();
 
             services.AddSingleton<CustomerDapperContext>();
