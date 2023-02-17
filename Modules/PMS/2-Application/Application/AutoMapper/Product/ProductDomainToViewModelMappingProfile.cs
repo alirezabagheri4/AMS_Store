@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.AutoMapper.Product
 {
-    internal class ProductDomainToViewModelMappingProfile
+    public class ProductDomainToViewModelMappingProfile
     {
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Application.ViewModel
 {
-    internal class ProductViewModel
+    public class ProductViewModel
     {
     }
 }

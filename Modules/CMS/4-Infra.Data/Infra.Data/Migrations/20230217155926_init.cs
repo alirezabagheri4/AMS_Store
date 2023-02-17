@@ -21,12 +21,12 @@ namespace Infra.Data.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    NationalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    DetailAddress = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    FirstName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
+                    NationalCode = table.Column<string>(type: "varchar(100)", nullable: false),
+                    City = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
+                    DetailAddress = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: true),
                     SubmitDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>

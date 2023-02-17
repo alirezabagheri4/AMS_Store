@@ -88,7 +88,8 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Handlers
         public void Dispose()
         {
             _customerCommandRepository.Dispose();
-            _customerQueryRepository.Dispose();
+            _customerCommandRepository.Dispose();
+
         }
     }
 }

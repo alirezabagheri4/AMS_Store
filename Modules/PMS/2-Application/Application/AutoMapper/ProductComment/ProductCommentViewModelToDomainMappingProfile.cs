@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Application.AutoMapper.ProductComment
 {
-    internal class ProductCommentViewModelToDomainMappingProfile
+    public class ProductCommentViewModelToDomainMappingProfile
     {
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.AutoMapper.Product
+namespace Application.Interface
 {
-    public class ProductViewModelToDomainMappingProfile
+    public interface IProductQueryAppServiceHandler
     {
     }
 }

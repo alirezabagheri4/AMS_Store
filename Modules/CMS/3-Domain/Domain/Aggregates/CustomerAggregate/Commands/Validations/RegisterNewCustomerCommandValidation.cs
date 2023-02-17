@@ -10,7 +10,6 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Validations
             ValidateLastName();
             ValidatePhoneNumber();
             ValidateEmail();
-            ValidateId();
             ValidateNationalCode();
             ValidateCity();
             ValidateDetailAddress();

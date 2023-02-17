@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using Application.ViewModel;
+using AutoMapper;
+using Domain.Aggregates.CustomerAggregate.Commands.Command;
 
 namespace Application.AutoMapper
 {
@@ -6,10 +8,16 @@ namespace Application.AutoMapper
     {
         public CustomerViewModelToDomainMappingProfile()
         {
-            //CreateMap<CustomerViewModel, AddCustomerCommand>()
-            //    .ConstructUsing(c => new RegisterNewCustomerCommand(c.Name, c.Email, c.BirthDate));
-            //CreateMap<CustomerViewModel, UpdateCustomerCommand>()
-            //    .ConstructUsing(c => new UpdateCustomerCommand(c.Id, c.Name, c.Email, c.BirthDate));
+            CreateMap<CustomerViewModel, RegisterNewCustomerCommand>()
+                .ConstructUsing(c => new RegisterNewCustomerCommand(c.Id, c.FirstName,
+                        c.LastName, c.PhoneNumber, c.NationalCode, c.City, c.DetailAddress, c.Email));
+
+            CreateMap<CustomerViewModel, UpdateCustomerCommand>()
+                .ConstructUsing(c => new UpdateCustomerCommand(c.Id, c.FirstName,
+                    c.LastName, c.PhoneNumber, c.NationalCode, c.City, c.DetailAddress, c.Email));
+
+            CreateMap<CustomerViewModel, RemoveCustomerCommand>()
+                .ConstructUsing(c => new RemoveCustomerCommand(c.Id));
         }
     }
 }

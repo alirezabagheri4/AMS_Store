@@ -7,10 +7,9 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Command
         private readonly long? _detailCustomerInfoId;
 
         public UpdateCustomerCommand(long id, string firstName, string lastName,
-            string phoneNumber, string nationalCode, long? detailCustomerInfoId,
-            string city, string detailAddress, string emailAddress)
+            string phoneNumber, string nationalCode, /*long? detailCustomerInfoId*/
+            string? city, string? detailAddress, string emailAddress)
         {
-            _detailCustomerInfoId = detailCustomerInfoId;
             this.Id = id;
             this.FirstName = firstName;
             this.LastName = lastName;

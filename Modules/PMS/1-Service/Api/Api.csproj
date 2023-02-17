@@ -19,12 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Product\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\CMS\2-Application\Application\Application.csproj" />
+    <ProjectReference Include="..\..\2-Application\Application\Application.csproj" />
     <ProjectReference Include="..\..\4-Infra.Data\Infra.Data\Infra.Data\Infra.Data.csproj" />
     <ProjectReference Include="..\..\5-Infra.CrossCutting\Infra.Ioc\Infra.Ioc.csproj" />
   </ItemGroup>

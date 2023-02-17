@@ -24,7 +24,7 @@ namespace Infra.Ioc
             services.AddScoped<IMediatorHandler, InMemoryBus>();
 
             // Application
-            services.AddScoped<ICustomerAppService, CustomerAppServiceHandler>();
+            services.AddScoped<ICustomerCommandAppServiceHandler, CustomerAppServiceHandler>();
 
             // Domain - Events
             services.AddScoped<INotificationHandler<CustomerRegisteredEvent>, CustomerEventHandler>();

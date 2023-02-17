@@ -12,19 +12,29 @@ namespace Application.ViewModel
         [Required(ErrorMessage = "The FirstName is Required")]
         [MinLength(2)]
         [MaxLength(100)]
-        public string FirstName { get;  set; }
+        public string FirstName { get; set; }
 
         [Required(ErrorMessage = "The LastName is Required")]
         [MinLength(2)]
         [MaxLength(100)]
-        public string LastName { get;  set; }
+        public string LastName { get; set; }
 
         [Required(ErrorMessage = "The PhoneNumber is Required")]
-        public string PhoneNumber { get;  set; }
+        public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "The NationalCode is Required")]
-        public string NationalCode { get;  set; }
+        public string NationalCode { get; set; }
 
-        public AddressViewModel AddressviewModel { get; set; }
+        [MaxLength(50)]
+        [EmailAddress(ErrorMessage = "Email Not Valid")]
+        public string Email { get; set; }
+
+        [MinLength(2)]
+        [MaxLength(100)]
+        public string? City { get; set; }
+
+        [MinLength(2)]
+        [MaxLength(200)]
+        public string? DetailAddress { get; set; }
     }
 }

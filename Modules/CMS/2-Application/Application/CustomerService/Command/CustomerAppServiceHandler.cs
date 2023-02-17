@@ -8,7 +8,7 @@ using FluentValidation.Results;
 
 namespace Application.CustomerService.Command
 {
-    public class CustomerAppServiceHandler : ICustomerAppService
+    public class CustomerAppServiceHandler : ICustomerCommandAppServiceHandler
     {
         private readonly IMapper _mapper;
         private readonly ICustomerCommandRepository _customerCommandRepository;

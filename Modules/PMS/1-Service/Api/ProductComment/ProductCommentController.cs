@@ -1,14 +1,12 @@
-﻿using Api.Framework;
-using Application.Interface;
+﻿using Application.Interface;
 using Application.ViewModel;
-using Domain.Aggregates.CustomerAggregate.Commands.Command;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Customer
+namespace Api.Controllers
 {
-    [Route("CMS")]
-    public class CustomerController : ApiController
+    [Route("PMS/ProductComment")]
+    public class ProductCommentController : ApiController
     {
         private readonly ICustomerCommandAppServiceHandler _customerCommandAppService;
         private readonly ICustomerQueryAppServiceHandler _customerQueryAppService;
@@ -24,7 +22,7 @@ namespace Api.Customer
         [HttpGet]
         public async Task<IEnumerable<CustomerViewModel>> Get(RegisterNewCustomerCommand customer)
         {
-            var result= await _customerQueryAppService.GetAll();
+            var result = await _customerQueryAppService.GetAll();
             return result;
         }
 
@@ -32,7 +30,7 @@ namespace Api.Customer
         [HttpGet("{id:guid}")]
         public async Task<CustomerViewModel> Get(long id)
         {
-            var result= await _customerQueryAppService.GetById(id);
+            var result = await _customerQueryAppService.GetById(id);
             return result;
         }
 

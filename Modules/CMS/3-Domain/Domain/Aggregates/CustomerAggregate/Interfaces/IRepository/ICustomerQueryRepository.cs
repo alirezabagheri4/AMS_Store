@@ -7,7 +7,7 @@ using Domain.Aggregates.CustomerAggregate.Models;
 
 namespace Domain.Aggregates.CustomerAggregate.Interfaces.IRepository
 {
-    public interface ICustomerQueryRepository : IRepository<Customer>
+    public interface ICustomerQueryRepository /*: IRepository<Customer>*/
     {
         Task<Customer> GetByNationalCode(string nationalCode);
         Task<Customer> GetById(long id);

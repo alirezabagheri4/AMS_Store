@@ -12,7 +12,7 @@ namespace Infra.Data.Persistence.Repository
     {
         protected readonly CustomerDapperContext DbContext;
 
-        public IUnitOfWork UnitOfWork => throw new NotImplementedException();
+        //public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
         public CustomerQueryRepository(CustomerDapperContext dbContext)
         {
@@ -22,17 +22,22 @@ namespace Infra.Data.Persistence.Repository
 
         public void Dispose()
         {
-            DbContext.Dispose();
+    
         }
 
-        public Task<Customer> GetByNationalCode(string nationalCode)
+        public async Task<Customer> GetByNationalCode(string nationalCode)
         {
-            throw new NotImplementedException();
+            const string query = "SELECT * FROM cms.Customer WHERE NationalCode = @nationalCode";
+            using (var connection = DbContext.CreateConnection())
+                {
+                    var company = await connection.QuerySingleOrDefaultAsync<Customer>(query, new { nationalCode });
+                    return company;
+                }
         }
 
         public async Task<Customer> GetById(long id)
         {
-            var query = "SELECT * FROM cms.Customer WHERE Id = @Id";
+            const string query = "SELECT * FROM cms.Customer WHERE Id = @Id";
             using (var connection = DbContext.CreateConnection())
             {
                 var company = await connection.QuerySingleOrDefaultAsync<Customer>(query, new { id });

@@ -70,7 +70,11 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Validations
         }
 
         protected static bool ValidatePhoneNumberDetail(string phoneNumber)
-            => phoneNumber.IsValidIranianPhoneNumber();
+        {
+            //return phoneNumber.IsValidIranianPhoneNumber();
+            return true;
+        }
+       
         protected static bool ValidateNationalCodeDetail(string nationalCode) => nationalCode.IsValidIranianNationalCode();
         protected static bool ValidateIdCode(long id) => id > 0;
     }

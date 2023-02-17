@@ -3,12 +3,8 @@ using FluentValidation.Results;
 
 namespace Application.Interface
 {
-    public interface ICustomerAppService
+    public interface ICustomerCommandAppServiceHandler
     {
-        Task<IEnumerable<CustomerViewModel>> GetAll();
-
-        Task<CustomerViewModel> GetById(long id);
-
         Task<ValidationResult> Register(CustomerViewModel customerViewModel);
 
         Task<ValidationResult> Update(CustomerViewModel customerViewModel);

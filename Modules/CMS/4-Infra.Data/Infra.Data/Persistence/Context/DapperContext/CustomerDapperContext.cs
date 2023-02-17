@@ -11,12 +11,12 @@ using Microsoft.Extensions.Configuration;
 
 namespace Infra.Data.Persistence.Context.DapperContext
 {
-    public class CustomerDapperContext:DbContext
+    public class CustomerDapperContext
     {
         private readonly string? _connectionString;
         public CustomerDapperContext(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("SqlConnection");
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
         public IDbConnection CreateConnection() => new SqlConnection(_connectionString);
     }

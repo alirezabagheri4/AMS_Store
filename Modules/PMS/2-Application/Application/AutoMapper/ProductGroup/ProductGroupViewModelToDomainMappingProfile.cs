@@ -1,4 +1,4 @@
-﻿namespace Application.AutoMapper;
+﻿namespace Application.AutoMapper.ProductGroup;
 
 public class ProductGroupViewModelToDomainMappingProfile
 {

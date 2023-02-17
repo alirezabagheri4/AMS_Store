@@ -12,9 +12,9 @@
 
         public string NationalCode { get; protected set; }
 
-        public string City { get; protected set; }
+        public string? City { get; protected set; }
 
-        public string DetailAddress { get; protected set; }
+        public string? DetailAddress { get; protected set; }
 
         public string EmailAddress { get; protected set; }
     }

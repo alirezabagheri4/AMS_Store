@@ -5,8 +5,9 @@ namespace Domain.Aggregates.CustomerAggregate.Commands.Command
     public class RegisterNewCustomerCommand : CustomerCommand
     {
         public RegisterNewCustomerCommand(long id, string firstName, string lastName,
-            string phoneNumber, string nationalCode, long? detailCustomerInfoId,
-            string city, string detailAddress, string emailAddress)
+            string phoneNumber, string nationalCode
+            /*, long? detailCustomerInfoId*/,
+            string? city, string? detailAddress, string emailAddress)
         {
             this.Id = id;
             this.FirstName = firstName;
