@@ -1,8 +1,8 @@
 ﻿using Domain.Aggregates.Product.Models;
 
-namespace Domain.Aggregates.Product.Interfaces.IRepository
+namespace Domain.Aggregates.Product.Interfaces.IRepository.IQuery
 {
-    public interface IProductDescriptionRepository : IRepository<ProductDescription>
+    public interface IProductDescriptionQueryRepository : IRepository<ProductDescription>
     {
         Task<ProductDescription> GetById(long id);
         Task<IEnumerable<ProductDescription>> GetAll();

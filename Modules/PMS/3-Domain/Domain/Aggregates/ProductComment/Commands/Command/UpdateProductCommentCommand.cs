@@ -1,4 +1,6 @@
-﻿namespace Domain.Aggregates.ProductComment.Commands.Command
+﻿using Domain.Aggregates.ProductComment.Commands.Validations;
+
+namespace Domain.Aggregates.ProductComment.Commands.Command
 {
     public class UpdateProductCommentCommand:ProductCommentCommand
     {

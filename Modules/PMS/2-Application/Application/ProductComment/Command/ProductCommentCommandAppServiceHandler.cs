@@ -2,6 +2,7 @@
 using Application.ViewModel;
 using AutoMapper;
 using Domain.Aggregates.ProductComment.Commands.Command;
+using Domain.Aggregates.ProductComment.Interface;
 using Domain.Common;
 using FluentValidation.Results;
 

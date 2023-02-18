@@ -1,21 +1,19 @@
-﻿using Domain.Aggregates.Product.Interfaces.IRepository;
-using Domain.Aggregates.Product.Models;
-using Domain.Aggregates.ProductComment.Interface;
+﻿using Domain.Aggregates.ProductComment.Interface;
 using Domain.Aggregates.ProductComment.Models;
 using Domain.Common;
 using Infra.Data.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra.Data.Persistence.Repository
+namespace Infra.Data.Persistence.Repository.Query
 {
-    public class ProductCommentRepository : IProductCommentQueryRepository
+    public class ProductCommentQueryRepository : IProductCommentQueryRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductComment> DbSet;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        public ProductCommentRepository(ProductManagementDbContext dbContext)
+        public ProductCommentQueryRepository(ProductManagementDbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<ProductComment>();

@@ -1,21 +1,19 @@
-﻿using Domain.Aggregates.Product.Interfaces.IRepository;
-using Domain.Aggregates.Product.Models;
-using Domain.Aggregates.ProductGroup.Interface;
+﻿using Domain.Aggregates.ProductGroup.Interface;
 using Domain.Aggregates.ProductGroup.Models;
+using Domain.Common;
 using Infra.Data.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
-using Domain.Common;
 
-namespace Infra.Data.Persistence.Repository
+namespace Infra.Data.Persistence.Repository.Query
 {
-    public class ProductGroupRepository : IProductGroupCommandRepository
+    public class ProductGroupCommandRepository : IProductGroupCommandRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductGroup> DbSet;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        public ProductGroupRepository(ProductManagementDbContext dbContext)
+        public ProductGroupCommandRepository(ProductManagementDbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<ProductGroup>();

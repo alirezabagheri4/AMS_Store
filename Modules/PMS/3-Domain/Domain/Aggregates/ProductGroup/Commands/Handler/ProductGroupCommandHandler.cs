@@ -12,10 +12,10 @@ namespace Domain.Aggregates.ProductGroup.Commands.Handler
         IRequestHandler<UpdateProductGroupCommand, ValidationResult>,
         IRequestHandler<RemoveProductGroupCommand, ValidationResult>
     {
-        private readonly IProductGroupCommandRepository _productGroupCommandRepository;
+        private readonly Interface.IProductGroupCommandRepository _productGroupCommandRepository;
         private readonly IProductGroupQueryRepository _productGroupQueryRepository;
 
-        public ProductGroupCommandHandler(IProductGroupCommandRepository productGroupCommandRepository,
+        public ProductGroupCommandHandler(Interface.IProductGroupCommandRepository productGroupCommandRepository,
             IProductGroupQueryRepository productGroupQueryRepository)
         {
             _productGroupCommandRepository= productGroupCommandRepository;

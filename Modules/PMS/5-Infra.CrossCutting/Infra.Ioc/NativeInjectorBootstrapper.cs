@@ -14,6 +14,7 @@ using FluentValidation.Results;
 using Infra.Bus;
 using Infra.Data.Persistence.Context;
 using Infra.Data.Persistence.Repository;
+using Infra.Data.Persistence.Repository.Query;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -48,10 +49,10 @@ namespace Infra.Ioc
             services.AddScoped<IRequestHandler<RemoveProductGroupCommand, ValidationResult>, ProductGroupCommandHandler>();
 
             // Infra - Data
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductGroupCommandRepository, ProductGroupRepository>();
-            services.AddScoped<IProductCommentQueryRepository, ProductCommentRepository>();
-            services.AddScoped<IProductDescriptionRepository, IProductDescriptionRepository>();
+            services.AddScoped<IProductCommandRepository, ProductCommandRepository>();
+            services.AddScoped<IProductGroupCommandRepository, ProductGroupCommandRepository>();
+            services.AddScoped<IProductCommentQueryRepository, ProductCommentQueryRepository>();
+            services.AddScoped<IProductDescriptionCommandRepository, IProductDescriptionCommandRepository>();
 
             services.AddScoped<ProductManagementDbContext>();
 

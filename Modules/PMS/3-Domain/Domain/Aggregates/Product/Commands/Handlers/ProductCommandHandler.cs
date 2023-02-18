@@ -1,6 +1,8 @@
 ﻿using Domain.Aggregates.Product.Commands.Command;
 using Domain.Aggregates.Product.Event.EventModel;
 using Domain.Aggregates.Product.Interfaces.IRepository;
+using Domain.Aggregates.Product.Interfaces.IRepository.ICommand;
+using Domain.Aggregates.Product.Interfaces.IRepository.IQuery;
 using Domain.Common;
 using MediatR;
 
@@ -11,11 +13,13 @@ namespace Domain.Aggregates.Product.Commands.Handlers
         IRequestHandler<UpdateProductCommand, FluentValidation.Results.ValidationResult>,
         IRequestHandler<RemoveProductCommand, FluentValidation.Results.ValidationResult>
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductCommandRepository _productRepository;
+        private readonly IProductQueryRepository _productQueryRepository;
 
-        public ProductCommandHandler(IProductRepository productRepository)
+        public ProductCommandHandler(IProductCommandRepository productRepository,IProductQueryRepository productQueryRepository)
         {
             _productRepository = productRepository;
+            _productQueryRepository = productQueryRepository;
         }
 
         public async Task<FluentValidation.Results.ValidationResult> Handle(RegisterNewProductCommand message, CancellationToken cancellationToken)
@@ -46,7 +50,7 @@ namespace Domain.Aggregates.Product.Commands.Handlers
             var product = new Models.Product(message.Name, message.ProductState, message.Price,
                 message.ProductDescription.ProductDescriptionText, message.ProductGroupId);
 
-            var existingCustomer = await _productRepository.GetById(message.Id);
+            var existingCustomer = await _productQueryRepository.GetById(message.Id);
 
             if (existingCustomer != null && existingCustomer.Id != message.Id)
             {
@@ -69,7 +73,7 @@ namespace Domain.Aggregates.Product.Commands.Handlers
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var product = await _productRepository.GetById(message.Id);
+            var product = await _productQueryRepository.GetById(message.Id);
 
             if (product is null)
             {

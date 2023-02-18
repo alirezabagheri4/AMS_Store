@@ -3,9 +3,9 @@ using Domain.Aggregates.ProductComment.Commands.Command;
 
 namespace Domain.Aggregates.ProductComment.Commands.Validations
 {
-    public class RegisterNewProductCommandValidation : ProductCommentValidation<RegisterNewProductCommentCommand>
+    public class RegisterNewProductCommentValidation : ProductCommentValidation<RegisterNewProductCommentCommand>
     {
-        public RegisterNewProductCommandValidation()
+        public RegisterNewProductCommentValidation()
         {
             ValidateCommentText();
             ValidateCustomerId();

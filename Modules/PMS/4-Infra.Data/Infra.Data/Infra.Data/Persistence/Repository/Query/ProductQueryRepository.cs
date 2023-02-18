@@ -1,19 +1,20 @@
 ﻿using Domain.Aggregates.Product.Interfaces.IRepository;
+using Domain.Aggregates.Product.Interfaces.IRepository.ICommand;
 using Domain.Aggregates.Product.Models;
+using Domain.Common;
 using Infra.Data.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
-using Domain.Common;
 
-namespace Infra.Data.Persistence.Repository
+namespace Infra.Data.Persistence.Repository.Query
 {
-    public class ProductRepository : IProductRepository
+    public class ProductCommandRepository : IProductCommandRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<Product> DbSet;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        public ProductRepository(ProductManagementDbContext dbContext)
+        public ProductCommandRepository(ProductManagementDbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<Product>();
