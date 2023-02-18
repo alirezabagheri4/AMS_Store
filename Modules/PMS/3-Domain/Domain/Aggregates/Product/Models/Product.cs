@@ -12,11 +12,11 @@ namespace Domain.Aggregates.Product.Models
 
         public long Price { get; set; }
 
-        public List<ProductComment> ProductComments{ get; set; }
+        public List<ProductComment.Models.ProductComment> ProductComments{ get; set; }
 
         public ProductDescription ProductDescription { get; set; }
 
-        public ProductGroup ProductGroup { get; set; }
+        public ProductGroup.Models.ProductGroup ProductGroup { get; set; }
         public long ProductGroupId { get; set; }
 
         public Product(string productName,eProductState productState,long price,string productDescription,long productGroup)

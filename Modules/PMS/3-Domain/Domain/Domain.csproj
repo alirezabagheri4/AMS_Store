@@ -19,11 +19,11 @@
 
   <ItemGroup>
     <Folder Include="Aggregates\ProductComment\Enum\" />
-    <Folder Include="Aggregates\ProductComment\Event\" />
-    <Folder Include="Aggregates\ProductComment\Models\" />
+    <Folder Include="Aggregates\ProductComment\Event\EventHandler\" />
+    <Folder Include="Aggregates\ProductComment\Event\EventModel\" />
     <Folder Include="Aggregates\ProductGroup\Enum\" />
-    <Folder Include="Aggregates\ProductGroup\Event\" />
-    <Folder Include="Aggregates\ProductGroup\Models\" />
+    <Folder Include="Aggregates\ProductGroup\Event\EventHandler\" />
+    <Folder Include="Aggregates\ProductGroup\Event\EventModel\" />
   </ItemGroup>
 
 </Project>

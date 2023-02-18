@@ -1,4 +1,5 @@
 ﻿using Domain.Aggregates.Product.Models;
+using Domain.Aggregates.ProductGroup.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,4 +1,6 @@
-﻿namespace Domain.Aggregates.Product.Interfaces.IRepository
+﻿using Domain.Aggregates.Product.Interfaces.IRepository;
+
+namespace Domain.Aggregates.ProductGroup.Interface
 {
     public interface IProductGroupCommandRepository : IRepository<Models.ProductGroup>
     {

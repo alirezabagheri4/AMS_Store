@@ -1,6 +1,8 @@
-﻿namespace Domain.Aggregates.Product.Interfaces.IRepository
+﻿using Domain.Aggregates.Product.Interfaces.IRepository;
+
+namespace Domain.Aggregates.ProductComment.Interface
 {
-    public interface IProductCommandQueryRepository : IRepository<Models.ProductComment>
+    public interface IProductCommentCommandRepository : IRepository<Models.ProductComment>
     {
         void Add(Models.ProductComment customer);
         void Update(Models.ProductComment customer);

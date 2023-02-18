@@ -1,5 +1,6 @@
 ﻿using Domain.Aggregates.Product.Interfaces.IRepository;
 using Domain.Aggregates.ProductComment.Commands.Command;
+using Domain.Aggregates.ProductComment.Interface;
 using Domain.Common;
 using FluentValidation.Results;
 using MediatR;
@@ -11,31 +12,34 @@ namespace Domain.Aggregates.ProductComment.Commands.Handler
         IRequestHandler<UpdateProductCommentCommand, FluentValidation.Results.ValidationResult>,
         IRequestHandler<RemoveProductCommentCommand, FluentValidation.Results.ValidationResult>
     {
-        private readonly IProductCommentQueryRepository _productCommentRepository;
+        private readonly IProductCommentQueryRepository _productCommentQueryRepository;
+        private readonly IProductCommentCommandRepository _productCommentCommandRepository;
 
-        public ProductCommentCommandHandler(IProductCommentQueryRepository productCommentRepository)
+        public ProductCommentCommandHandler(IProductCommentQueryRepository productCommentQueryRepository,
+            IProductCommentCommandRepository productCommentCommandRepository)
         {
-            _productCommentRepository = productCommentRepository;
+            _productCommentCommandRepository= productCommentCommandRepository;
+            _productCommentQueryRepository= productCommentQueryRepository;
         }
 
         public async Task<ValidationResult> Handle(RegisterNewProductCommentCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var productComment = new Product.Models.ProductComment(message.ProductId, message.CustomerId, message.CommentText);
+            var productComment = new Models.ProductComment(message.ProductId, message.CustomerId, message.CommentText);
 
-            _productCommentRepository.Add(productComment);
+            _productCommentCommandRepository.Add(productComment);
 
-            return await Commit(_productCommentRepository.UnitOfWork);
+            return await Commit(_productCommentCommandRepository.UnitOfWork);
         }
 
         public async Task<ValidationResult> Handle(UpdateProductCommentCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var productComment = new Product.Models.ProductComment(message.ProductId, message.CustomerId, message.CommentText);
+            var productComment = new Models.ProductComment(message.ProductId, message.CustomerId, message.CommentText);
 
-            var existingCustomer = await _productCommentRepository.GetById(productComment.Id);
+            var existingCustomer = await _productCommentQueryRepository.GetById(productComment.Id);
 
             if (existingCustomer != null && existingCustomer.Id != productComment.Id)
             {
@@ -46,16 +50,16 @@ namespace Domain.Aggregates.ProductComment.Commands.Handler
                 }
             }
 
-            _productCommentRepository.Update(productComment);
+            _productCommentCommandRepository.Update(productComment);
 
-            return await Commit(_productCommentRepository.UnitOfWork);
+            return await Commit(_productCommentCommandRepository.UnitOfWork);
         }
 
         public async Task<ValidationResult> Handle(RemoveProductCommentCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var product = await _productCommentRepository.GetById(message.Id);
+            var product = await _productCommentQueryRepository.GetById(message.Id);
 
             if (product is null)
             {
@@ -63,14 +67,15 @@ namespace Domain.Aggregates.ProductComment.Commands.Handler
                 return ValidationResult;
             }
 
-            _productCommentRepository.Remove(product);
+            _productCommentCommandRepository.Remove(product);
 
-            return await Commit(_productCommentRepository.UnitOfWork);
+            return await Commit(_productCommentCommandRepository.UnitOfWork);
         }
 
         public void Dispose()
         {
-            _productCommentRepository.Dispose();
+            _productCommentCommandRepository.Dispose();
+            _productCommentQueryRepository.Dispose();
         }
     }
 }

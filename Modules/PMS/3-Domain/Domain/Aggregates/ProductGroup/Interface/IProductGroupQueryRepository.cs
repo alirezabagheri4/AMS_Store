@@ -7,9 +7,9 @@ using Domain.Aggregates.Product.Interfaces.IRepository;
 
 namespace Domain.Aggregates.ProductGroup.Interface
 {
-    public interface IProductGroupQueryRepository : IRepository<Product.Models.ProductGroup>
+    public interface IProductGroupQueryRepository : IRepository<Models.ProductGroup>
     {
-        Task<Product.Models.ProductGroup> GetById(long id);
-        Task<IEnumerable<Product.Models.ProductGroup>> GetAll();
+        Task<Models.ProductGroup> GetById(long id);
+        Task<IEnumerable<Models.ProductGroup>> GetAll();
     }
 }

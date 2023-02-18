@@ -1,7 +1,7 @@
 ﻿using Domain.Aggregates.Product.Interfaces;
 using Domain.Framework;
 
-namespace Domain.Aggregates.Product.Models
+namespace Domain.Aggregates.ProductGroup.Models
 {
     public class ProductGroup : BaseEntity, IAggregateRoot
     {
@@ -9,7 +9,7 @@ namespace Domain.Aggregates.Product.Models
 
         public string Description { get; set; }
 
-        public List<Product> Products { get; set; }
+        public List<Product.Models.Product> Products { get; set; }
 
         public ProductGroup(string groupName,string description)
         {

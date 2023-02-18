@@ -1,5 +1,7 @@
 ﻿using Domain.Aggregates.Product.Interfaces.IRepository;
 using Domain.Aggregates.Product.Models;
+using Domain.Aggregates.ProductComment.Interface;
+using Domain.Aggregates.ProductComment.Models;
 using Domain.Common;
 using Infra.Data.Persistence.Context;
 using Microsoft.EntityFrameworkCore;

@@ -1,7 +1,7 @@
 ﻿using Domain.Aggregates.Product.Interfaces;
 using Domain.Framework;
 
-namespace Domain.Aggregates.Product.Models
+namespace Domain.Aggregates.ProductComment.Models
 {
     public class ProductComment : BaseEntity, IAggregateRoot
     {

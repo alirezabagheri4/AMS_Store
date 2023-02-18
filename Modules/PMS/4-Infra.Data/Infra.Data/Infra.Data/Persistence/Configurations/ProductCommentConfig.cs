@@ -1,4 +1,5 @@
 ﻿using Domain.Aggregates.Product.Models;
+using Domain.Aggregates.ProductComment.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
