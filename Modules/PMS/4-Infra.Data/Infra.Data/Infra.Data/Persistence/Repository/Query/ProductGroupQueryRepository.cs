@@ -6,14 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository.Query
 {
-    public class ProductGroupCommandRepository : IProductGroupCommandRepository
+    public class ProductGroupQueryRepository : IProductGroupQueryRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductGroup> DbSet;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        public ProductGroupCommandRepository(ProductManagementDbContext dbContext)
+        public ProductGroupQueryRepository(ProductManagementDbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<ProductGroup>();
@@ -34,29 +34,9 @@ namespace Infra.Data.Persistence.Repository.Query
             return await DbSet.FirstOrDefaultAsync(x => EF.Functions.Like(x.GroupName, groupName)) ?? new ProductGroup();
         }
 
-        public void Add(ProductGroup customer)
-        {
-            DbSet.Add(customer);
-        }
-
-        public void Update(ProductGroup customer)
-        {
-            DbSet.Update(customer);
-        }
-
-        public void Remove(ProductGroup customer)
-        {
-            DbSet.Remove(customer);
-        }
-
         public void Dispose()
         {
             DbContext.Dispose();
-        }
-
-        public void RemoveById(long id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

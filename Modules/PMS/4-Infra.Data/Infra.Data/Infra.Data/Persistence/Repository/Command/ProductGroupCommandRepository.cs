@@ -19,21 +19,6 @@ namespace Infra.Data.Persistence.Repository.Command
             DbSet = DbContext.Set<ProductGroup>();
         }
 
-        public async Task<ProductGroup> GetById(long id)
-        {
-            return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? new ProductGroup();
-        }
-
-        public Task<IEnumerable<ProductGroup>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<ProductGroup> GetByProductGroupName(string groupName)
-        {
-            return await DbSet.FirstOrDefaultAsync(x => EF.Functions.Like(x.GroupName, groupName)) ?? new ProductGroup();
-        }
-
         public void Add(ProductGroup customer)
         {
             DbSet.Add(customer);

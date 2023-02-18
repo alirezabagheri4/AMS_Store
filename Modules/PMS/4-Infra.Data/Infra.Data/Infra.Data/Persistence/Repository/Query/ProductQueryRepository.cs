@@ -1,5 +1,6 @@
 ﻿using Domain.Aggregates.Product.Interfaces.IRepository;
 using Domain.Aggregates.Product.Interfaces.IRepository.ICommand;
+using Domain.Aggregates.Product.Interfaces.IRepository.IQuery;
 using Domain.Aggregates.Product.Models;
 using Domain.Common;
 using Infra.Data.Persistence.Context;
@@ -7,14 +8,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository.Query
 {
-    public class ProductCommandRepository : IProductCommandRepository
+    public class ProductQueryRepository : IProductQueryRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<Product> DbSet;
 
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        public ProductCommandRepository(ProductManagementDbContext dbContext)
+        public ProductQueryRepository(ProductManagementDbContext dbContext)
         {
             DbContext = dbContext;
             DbSet = DbContext.Set<Product>();
@@ -30,29 +31,9 @@ namespace Infra.Data.Persistence.Repository.Query
             throw new NotImplementedException();
         }
 
-        public void Add(Product customer)
-        {
-            DbSet.Add(customer);
-        }
-
-        public void Update(Product customer)
-        {
-            DbSet.Update(customer);
-        }
-
-        public void Remove(Product customer)
-        {
-            DbSet.Remove(customer);
-        }
-
         public void Dispose()
         {
             DbContext.Dispose();
-        }
-
-        public void RemoveById(long id)
-        {
-            throw new NotImplementedException();
         }
     }
 }

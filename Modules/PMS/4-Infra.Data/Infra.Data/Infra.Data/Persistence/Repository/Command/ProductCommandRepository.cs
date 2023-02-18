@@ -19,16 +19,6 @@ namespace Infra.Data.Persistence.Repository.Command
             DbSet = DbContext.Set<Product>();
         }
 
-        public async Task<Product> GetById(long id)
-        {
-            return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? new Product();
-        }
-
-        public Task<IEnumerable<Product>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public void Add(Product customer)
         {
             DbSet.Add(customer);
