@@ -19,7 +19,7 @@ namespace Infra.Data.Persistence.Interceptors
 
         private static void SetShadowProperties(DbContextEventData eventData)
         {
-            var changeTracker = eventData.Context.ChangeTracker;
+            var changeTracker = eventData.Context?.ChangeTracker;
             var addedEntities = changeTracker.Entries().Where(c => c.State == Microsoft.EntityFrameworkCore.EntityState.Added);
             var modifiedEntities = changeTracker.Entries().Where(c => c.State == Microsoft.EntityFrameworkCore.EntityState.Modified);
             var now = DateTime.Now;

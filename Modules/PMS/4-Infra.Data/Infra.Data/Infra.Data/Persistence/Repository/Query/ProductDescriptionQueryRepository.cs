@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository.Query
 {
-    internal class ProductDescriptionQueryRepository : IProductDescriptionQueryRepository
+    public class ProductDescriptionQueryRepository : IProductDescriptionQueryRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductDescription> DbSet;

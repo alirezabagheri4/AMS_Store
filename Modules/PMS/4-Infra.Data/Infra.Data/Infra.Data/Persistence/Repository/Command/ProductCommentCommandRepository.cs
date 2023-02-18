@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository.Command
 {
-    public class ProductCommentCommandRepository : IProductCommentQueryRepository
+    public class ProductCommentCommandRepository : IProductCommentCommandRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductComment> DbSet;

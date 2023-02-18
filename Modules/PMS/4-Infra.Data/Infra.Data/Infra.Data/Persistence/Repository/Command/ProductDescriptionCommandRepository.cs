@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infra.Data.Persistence.Repository.Command
 {
-    internal class ProductDescriptionCommandRepository : IProductDescriptionCommandRepository
+    public class ProductDescriptionCommandRepository : IProductDescriptionCommandRepository
     {
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductDescription> DbSet;
