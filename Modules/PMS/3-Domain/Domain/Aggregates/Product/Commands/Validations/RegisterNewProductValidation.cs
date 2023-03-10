@@ -12,7 +12,6 @@ namespace Domain.Aggregates.Product.Commands.Validations
             ValidateProductDescriptionText();
             ValidateProductDescription_ProductId();
             ValidateId();
-            ValidateProductGroupId();
         }
     }
 }

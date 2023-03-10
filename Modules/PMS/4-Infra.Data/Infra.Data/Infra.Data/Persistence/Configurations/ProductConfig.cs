@@ -26,7 +26,7 @@ internal class ProductConfig : IEntityTypeConfiguration<Product>
 
         //one to many
         builder.HasMany(product => product.ProductComments).WithOne().HasForeignKey(comment => comment.ProductId);
-        //builder.HasOne(product => product.ProductGroup).WithOne().HasForeignKey<ProductGroup>(c => c.);
+        builder.HasOne(product => product.ProductGroup).WithMany(c => c.Products);
 
 
         builder.ToTable("Product", "PMS");

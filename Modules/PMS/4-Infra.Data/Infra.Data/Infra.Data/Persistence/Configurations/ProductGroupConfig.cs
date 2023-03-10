@@ -18,7 +18,8 @@ internal class ProductGroupConfig : IEntityTypeConfiguration<ProductGroup>
 
         builder.HasIndex(c => new { c.Id }).IsUnique();
 
-        builder.HasMany(productGroup => productGroup.Products).WithOne().HasForeignKey(Product => Product.ProductGroup);
+        builder.HasMany(productGroup => productGroup.Products)
+            .WithOne().HasForeignKey(Product => Product.ProductGroup);
 
         builder.ToTable("ProductGroup", "PMS");
     }

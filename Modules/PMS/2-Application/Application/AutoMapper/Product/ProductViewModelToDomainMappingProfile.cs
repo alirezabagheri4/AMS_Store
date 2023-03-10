@@ -15,8 +15,8 @@ namespace Application.AutoMapper.Product
                     new Domain.Aggregates.Product.Models.ProductDescription
                     {
                         ProductDescriptionText = c.ProductDescriptionText
-                    },
-                    new Domain.Aggregates.ProductGroup.Models.ProductGroup()));
+                    }, ConvertProductGroupModelToDomain(c.ProductGroup)
+                    ));
 
             CreateMap<ProductViewModel, UpdateProductCommand>()
                 .ConstructUsing(c =>
@@ -25,11 +25,16 @@ namespace Application.AutoMapper.Product
                     {
                         ProductDescriptionText = c.ProductDescriptionText
                     },
-                    c.ProductGroupId));
+                    ConvertProductGroupModelToDomain(c.ProductGroup)));
 
             CreateMap<ProductViewModel, RemoveProductCommand>()
                 .ConstructUsing(c =>
                     new RemoveProductCommand(c.Id));
+        }
+
+        public Domain.Aggregates.ProductGroup.Models.ProductGroup ConvertProductGroupModelToDomain(ProductGroupViewModel viewModel)
+        {
+            return new Domain.Aggregates.ProductGroup.Models.ProductGroup(viewModel.GroupName, viewModel.Description);
         }
     }
 }
