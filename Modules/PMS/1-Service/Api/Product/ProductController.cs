@@ -23,8 +23,7 @@ namespace Api.Product
         [HttpGet]
         public async Task<IEnumerable<ProductViewModel>> Get()
         {
-            var result = await _productQueryAppService.GetAll();
-            return result;
+           return await _productQueryAppService.GetAll();
         }
 
         [AllowAnonymous]

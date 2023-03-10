@@ -1,6 +1,8 @@
-﻿namespace Application.AutoMapper.ProductComment
+﻿using AutoMapper;
+
+namespace Application.AutoMapper.ProductComment
 {
-    public class ProductDomainToViewModelMappingProfile
+    public class ProductCommentDomainToViewModelMappingProfile : Profile
     {
     }
 }

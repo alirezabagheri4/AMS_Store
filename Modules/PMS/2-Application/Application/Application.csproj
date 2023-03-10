@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="AutoMapper\DtoMapp\" />
+    <Compile Remove="AutoMapper\DtoMapp\**" />
+    <EmbeddedResource Remove="AutoMapper\DtoMapp\**" />
+    <None Remove="AutoMapper\DtoMapp\**" />
   </ItemGroup>
 
   <ItemGroup>

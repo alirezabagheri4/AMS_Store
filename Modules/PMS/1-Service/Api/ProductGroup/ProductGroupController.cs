@@ -32,8 +32,7 @@ namespace Api.ProductGroup
         [HttpGet("{id:guid}")]
         public async Task<ProductGroupViewModel> Get(long id)
         {
-            var result = await _productGroupQueryAppService.GetById(id);
-            return result;
+           return await _productGroupQueryAppService.GetById(id);
         }
 
         [AllowAnonymous]

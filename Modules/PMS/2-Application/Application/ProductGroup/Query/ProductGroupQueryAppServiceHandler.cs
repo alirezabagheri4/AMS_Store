@@ -31,9 +31,9 @@ namespace Application.ProductGroup.Query
             return _mapper.Map<IEnumerable<ProductGroupViewModel>>(await _productGroupQueryRepository.GetAll());
         }
 
-        public async Task<ProductCommentViewModel> GetById(long id)
+        public async Task<ProductGroupViewModel> GetById(long id)
         {
-            return _mapper.Map<ProductCommentViewModel>(await _productGroupQueryRepository.GetById(id));
+            return _mapper.Map<ProductGroupViewModel>(await _productGroupQueryRepository.GetById(id));
         }
     }
 }

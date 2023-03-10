@@ -1,5 +1,7 @@
-﻿namespace Application.AutoMapper.ProductDescription;
+﻿using AutoMapper;
 
-public class ProductDescriptionViewModelToDomainMappingProfile
+namespace Application.AutoMapper.ProductDescription;
+
+public class ProductDescriptionViewModelToDomainMappingProfile : Profile
 {
 }

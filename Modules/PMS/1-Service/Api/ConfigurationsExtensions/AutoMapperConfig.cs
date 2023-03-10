@@ -1,4 +1,5 @@
 ﻿using Application.AutoMapper;
+using Application.AutoMapper.Product;
 
 namespace Api.ConfigurationsExtensions;
 
@@ -9,7 +10,7 @@ public static class AutoMapperConfig
         if (services == null) throw new ArgumentNullException(nameof(services));
 
         services.AddAutoMapper(
-            typeof(DomainToViewModelMappingProfile),
-            typeof(ViewModelToDomainMappingProfile));
+            typeof(ProductDomainToViewModelMappingProfile),
+            typeof(ProductDomainToViewModelMappingProfile));
     }
 }

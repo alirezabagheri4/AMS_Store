@@ -26,14 +26,14 @@ namespace Application.ProductService.Query
             _productQueryRepository = productQueryRepository;
         }
 
-        public async Task<IEnumerable<ProductGroupViewModel>> GetAll()
+        public async Task<IEnumerable<ProductViewModel>> GetAll()
         {
-            return _mapper.Map<IEnumerable<ProductGroupViewModel>>(await _productQueryRepository.GetAll());
+            return _mapper.Map<IEnumerable<ProductViewModel>>(await _productQueryRepository.GetAll());
         }
 
-        public async Task<ProductCommentViewModel> GetById(long id)
+        public async Task<ProductViewModel> GetById(long id)
         {
-            return _mapper.Map<ProductCommentViewModel>(await _productQueryRepository.GetById(id));
+            return _mapper.Map<ProductViewModel>(await _productQueryRepository.GetById(id));
         }
     }
 }
