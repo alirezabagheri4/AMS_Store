@@ -8,5 +8,10 @@ namespace Application.ViewModel
 {
     public class ProductGroupViewModel
     {
+        public long Id { get; set; }
+
+        public string GroupName { get; set; }
+
+        public string Description { get; set; }
     }
 }

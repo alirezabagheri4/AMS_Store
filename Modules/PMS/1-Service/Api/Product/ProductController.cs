@@ -21,7 +21,7 @@ namespace Api.Product
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IEnumerable<ProductViewModel>> Get()
+        public async Task<IEnumerable<ProductViewModel>> GetAll()
         {
            return await _productQueryAppService.GetAll();
         }

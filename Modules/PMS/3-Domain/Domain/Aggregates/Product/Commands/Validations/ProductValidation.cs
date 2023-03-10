@@ -51,13 +51,13 @@ namespace Domain.Aggregates.Product.Commands.Validations
                 .Must(ValidateIdCode);
         }
 
-        protected void ValidateProductGroupId()
-        {
-            RuleFor(c => c.ProductGroupId)
-                .NotEqual(null)
-                .NotEqual(0)
-                .Must(ValidateIdCode);
-        }
+        //protected void ValidateProductGroup()
+        //{
+        //    RuleFor(c => c.ProductGroup)
+        //        .NotEqual(null)
+        //        .NotEqual(0)
+        //        .Must(ValidateIdCode);
+        //}
 
         protected static bool ValidateIdCode(long id) => id > 0;
     }

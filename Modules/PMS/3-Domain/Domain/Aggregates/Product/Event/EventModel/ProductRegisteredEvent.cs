@@ -6,7 +6,7 @@ namespace Domain.Aggregates.Product.Event.EventModel
     public class ProductRegisteredEvent : Framework.Event
     {
         public ProductRegisteredEvent(long id,string name, eProductState productState, long price,
-            ProductDescription description,long productGroup)
+            ProductDescription description,ProductGroup.Models.ProductGroup productGroup)
         {
             Name = name;
             ProductState = productState;
@@ -25,6 +25,6 @@ namespace Domain.Aggregates.Product.Event.EventModel
 
         public ProductDescription ProductDescription { get; set; }
 
-        public long ProductGroupId { get; set; }
+        public ProductGroup.Models.ProductGroup ProductGroupId { get; set; }
     }
 }

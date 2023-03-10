@@ -36,7 +36,7 @@ namespace Domain.Aggregates.Product.Commands.Handlers
             //}
 
             product.AddDomainEvent(new ProductRegisteredEvent(product.Id,product.Name, product.ProductState, product.Price,
-                product.ProductDescription,product.ProductGroupId));
+                product.ProductDescription,product.ProductGroup));
 
             _productRepository.Add(product);
 
@@ -62,7 +62,7 @@ namespace Domain.Aggregates.Product.Commands.Handlers
             }
 
             product.AddDomainEvent(new ProductUpdatedEvent(product.Id, product.Name, product.ProductState, product.Price,
-                product.ProductDescription, product.ProductGroupId));
+                product.ProductDescription, product.ProductGroup));
 
             _productRepository.Update(product);
 

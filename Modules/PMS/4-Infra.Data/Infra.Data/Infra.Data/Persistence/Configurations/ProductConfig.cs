@@ -23,10 +23,10 @@ internal class ProductConfig : IEntityTypeConfiguration<Product>
 
         //one to one
         builder.HasOne(product => product.ProductDescription).WithOne().HasForeignKey<ProductDescription>(c => c.ProductId);
-        builder.HasOne(product => product.ProductGroup).WithOne().HasForeignKey<ProductGroup>(c => c.Products);
 
         //one to many
         builder.HasMany(product => product.ProductComments).WithOne().HasForeignKey(comment => comment.ProductId);
+        //builder.HasOne(product => product.ProductGroup).WithOne().HasForeignKey<ProductGroup>(c => c.);
 
 
         builder.ToTable("Product", "PMS");

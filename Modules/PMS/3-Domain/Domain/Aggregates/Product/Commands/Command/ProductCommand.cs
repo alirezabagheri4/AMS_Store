@@ -15,6 +15,6 @@ namespace Domain.Aggregates.Product.Commands.Command
 
         public ProductDescription ProductDescription { get; set; }
 
-        public long ProductGroupId { get; set; }
+        public ProductGroup.Models.ProductGroup ProductGroupId { get; set; }
     }
 }

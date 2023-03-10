@@ -12,20 +12,19 @@ namespace Domain.Aggregates.Product.Models
 
         public long Price { get; set; }
 
-        public List<ProductComment.Models.ProductComment> ProductComments{ get; set; }
+        public List<ProductComment.Models.ProductComment> ProductComments { get; set; }
 
         public ProductDescription ProductDescription { get; set; }
 
         public ProductGroup.Models.ProductGroup ProductGroup { get; set; }
-        public long ProductGroupId { get; set; }
 
-        public Product(string productName,eProductState productState,long price,string productDescription,long productGroup)
+        public Product(string productName, eProductState productState, long price, string productDescription, ProductGroup.Models.ProductGroup productGroup)
         {
-            this.Name=productName;
-            this.ProductState=productState;
-            this.Price=price;
-            this.ProductDescription = new  ProductDescription(){ProductDescriptionText = productDescription};
-            this.ProductGroupId = productGroup;
+            this.Name = productName;
+            this.ProductState = productState;
+            this.Price = price;
+            this.ProductDescription = new ProductDescription() { ProductDescriptionText = productDescription };
+            this.ProductGroup = productGroup;
         }
 
         public Product()
