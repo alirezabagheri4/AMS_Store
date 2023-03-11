@@ -16,8 +16,8 @@ namespace Infra.Data.Persistence.Context
             IMediatorHandler mediatorHandler) : base(options)
         {
             _mediatorHandler = mediatorHandler;
-            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            ChangeTracker.AutoDetectChangesEnabled = false;
+            //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            //ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
         public DbSet<Product> Products { get; set; }
