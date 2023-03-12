@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Migrations\20230311150251_init-first.cs" />
-    <Compile Include="Migrations\20230311150251_init-first.Designer.cs" />
+    <Compile Include="Migrations\20230312105227_init.cs" />
+    <Compile Include="Migrations\20230312105227_init.Designer.cs" />
     <Compile Include="Migrations\ProductManagementDbContextModelSnapshot.cs" />
   </ItemGroup>
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infra.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class initfirst : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -41,7 +41,7 @@ namespace Infra.Data.Migrations
                     ProductState = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     Price = table.Column<long>(type: "bigint", nullable: false, defaultValue: 0L),
                     ProductGroupId = table.Column<long>(type: "bigint", nullable: false),
-                    SubmitDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 3, 11, 18, 32, 50, 933, DateTimeKind.Local).AddTicks(7291))
+                    SubmitDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 3, 12, 14, 22, 27, 176, DateTimeKind.Local).AddTicks(4241))
                 },
                 constraints: table =>
                 {

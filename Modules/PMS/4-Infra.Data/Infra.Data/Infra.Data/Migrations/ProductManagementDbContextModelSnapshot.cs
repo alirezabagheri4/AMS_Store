@@ -17,7 +17,8 @@ namespace Infra.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("CMS")
+                .HasDefaultSchema("PMS")
+                .UseCollation("Persian_100_CI_AS")
                 .HasAnnotation("ProductVersion", "7.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -53,7 +54,7 @@ namespace Infra.Data.Migrations
                     b.Property<DateTime>("SubmitDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 3, 11, 18, 32, 50, 933, DateTimeKind.Local).AddTicks(7291));
+                        .HasDefaultValue(new DateTime(2023, 3, 12, 14, 22, 27, 176, DateTimeKind.Local).AddTicks(4241));
 
                     b.HasKey("Id");
 

@@ -8,6 +8,5 @@ internal class RegisterNewProductGroupValidation : ProductGroupValidation<Produc
     {
         ValidateGroupName();
         ValidateDescription();
-        ValidateId();
     }
 }

@@ -11,7 +11,7 @@ namespace Infra.Data.Persistence.Repository.Command
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductGroup> DbSet;
 
-        public IUnitOfWork UnitOfWork => throw new NotImplementedException();
+        public IUnitOfWork UnitOfWork => DbContext;
 
         public ProductGroupCommandRepository(ProductManagementDbContext dbContext)
         {

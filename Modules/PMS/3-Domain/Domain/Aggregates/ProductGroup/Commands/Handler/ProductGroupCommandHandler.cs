@@ -28,11 +28,11 @@ namespace Domain.Aggregates.ProductGroup.Commands.Handler
 
             var productGroup = new Models.ProductGroup(message.GroupName, message.Description);
 
-            if (await _productGroupQueryRepository.GetById(productGroup.Id) != null)
-            {
-                AddError("The customer e-mail has already been taken.");
-                return ValidationResult;
-            }
+            //if (await _productGroupQueryRepository.GetByName(productGroup.Name) != null)
+            //{
+            //    AddError("The Product has already been taken.");
+            //    return ValidationResult;
+            //}
 
             _productGroupCommandRepository.Add(productGroup);
 

@@ -16,8 +16,8 @@ namespace Infra.Data.Persistence.Context
             IMediatorHandler mediatorHandler) : base(options)
         {
             _mediatorHandler = mediatorHandler;
-            //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            //ChangeTracker.AutoDetectChangesEnabled = false;
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.AutoDetectChangesEnabled = false;
         }
 
         public DbSet<Product> Products { get; set; }
@@ -38,7 +38,8 @@ namespace Infra.Data.Persistence.Context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
-            modelBuilder.HasDefaultSchema("CMS");
+            modelBuilder.UseCollation("Persian_100_CI_AS");
+            modelBuilder.HasDefaultSchema("PMS");
         }
 
         public async Task<bool> Commit()
@@ -49,7 +50,8 @@ namespace Infra.Data.Persistence.Context
             // side effects from the domain event handlers which are using the same DbContext with "InstancePerLifetimeScope" or "scoped" lifetime
             // B) Right AFTER committing data (EF SaveChanges) into the DB will make multiple transactions. 
             // You will need to handle eventual consistency and compensatory actions in case of failures in any of the Handlers. 
-            await _mediatorHandler.PublishDomainEvents(this).ConfigureAwait(false);
+            //TODO
+            //await _mediatorHandler.PublishDomainEvents(this).ConfigureAwait(false);
 
             // After executing this line all the changes (from the Command Handler and Domain Event Handlers) 
             // performed through the DbContext will be committed
