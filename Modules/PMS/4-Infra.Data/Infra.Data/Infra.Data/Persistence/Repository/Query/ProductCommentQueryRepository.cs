@@ -11,7 +11,7 @@ namespace Infra.Data.Persistence.Repository.Query
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<ProductComment> DbSet;
 
-        public IUnitOfWork UnitOfWork => throw new NotImplementedException();
+        public IUnitOfWork UnitOfWork => DbContext;
 
         public ProductCommentQueryRepository(ProductManagementDbContext dbContext)
         {
@@ -24,9 +24,9 @@ namespace Infra.Data.Persistence.Repository.Query
             return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ??  new ProductComment();
         }
 
-        public Task<IEnumerable<ProductComment>> GetAll()
+        public async Task<IEnumerable<ProductComment>> GetAll()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
         }
 
         public async Task<ProductComment> GetByProductId(long productId)

@@ -15,6 +15,7 @@ internal class ProductGroupConfig : IEntityTypeConfiguration<ProductGroup>
         builder.Property(x => x.Description).HasMaxLength(100).IsRequired();
         builder.Property(x => x.GroupName).HasMaxLength(30).IsRequired();
         builder.Property(x => x.SubmitDate).IsRequired();
+        builder.Property(x => x.ParentProductGroupId).HasDefaultValue(0);
 
         builder.HasIndex(c => new { c.Id }).IsUnique();
 

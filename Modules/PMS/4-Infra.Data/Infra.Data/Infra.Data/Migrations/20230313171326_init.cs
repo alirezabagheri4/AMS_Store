@@ -23,6 +23,7 @@ namespace Infra.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GroupName = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     Description = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
+                    ParentProductGroupId = table.Column<long>(type: "bigint", nullable: false, defaultValue: 0L),
                     SubmitDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -41,7 +42,7 @@ namespace Infra.Data.Migrations
                     ProductState = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     Price = table.Column<long>(type: "bigint", nullable: false, defaultValue: 0L),
                     ProductGroupId = table.Column<long>(type: "bigint", nullable: false),
-                    SubmitDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 3, 12, 14, 22, 27, 176, DateTimeKind.Local).AddTicks(4241))
+                    SubmitDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 3, 13, 20, 43, 26, 149, DateTimeKind.Local).AddTicks(9583))
                 },
                 constraints: table =>
                 {

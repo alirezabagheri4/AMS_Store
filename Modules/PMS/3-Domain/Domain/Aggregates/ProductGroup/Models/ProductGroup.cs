@@ -9,12 +9,21 @@ namespace Domain.Aggregates.ProductGroup.Models
 
         public string Description { get; set; }
 
+        public long ParentProductGroupId { get; set; } 
+
         public ICollection<Product.Models.Product> Products { get; set; }
 
         public ProductGroup(string groupName, string description)
         {
             GroupName = groupName;
             Description = description;
+        }
+
+        public ProductGroup(string groupName, string description,long id)
+        {
+            GroupName = groupName;
+            Description = description;
+            Id = id;
         }
 
         public ProductGroup()

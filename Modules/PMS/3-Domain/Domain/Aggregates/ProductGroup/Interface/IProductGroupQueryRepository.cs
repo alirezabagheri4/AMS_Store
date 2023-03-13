@@ -11,5 +11,6 @@ namespace Domain.Aggregates.ProductGroup.Interface
     {
         Task<Models.ProductGroup> GetById(long id);
         Task<IEnumerable<Models.ProductGroup>> GetAll();
+        Task<IEnumerable<Models.ProductGroup>> GetListSubProductGroupById(long id);
     }
 }

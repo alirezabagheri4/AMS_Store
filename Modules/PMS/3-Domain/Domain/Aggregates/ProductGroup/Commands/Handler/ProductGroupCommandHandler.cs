@@ -43,7 +43,7 @@ namespace Domain.Aggregates.ProductGroup.Commands.Handler
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var productGroup = new Models.ProductGroup(message.GroupName, message.Description);
+            var productGroup = new Models.ProductGroup(message.GroupName, message.Description,message.Id);
 
             var existingCustomer = await _productGroupQueryRepository.GetById(productGroup.Id);
 

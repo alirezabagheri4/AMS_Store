@@ -30,7 +30,7 @@ namespace Infra.Data.Persistence.Interceptors
 
             foreach (var item in modifiedEntities)
             {
-                item.Property("UpdateDate").CurrentValue = now;
+                //item.Property("UpdateDate").CurrentValue = now;
             }
         }
     }

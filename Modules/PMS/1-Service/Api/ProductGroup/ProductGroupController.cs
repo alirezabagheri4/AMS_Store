@@ -22,7 +22,7 @@ namespace Api.ProductGroup
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IEnumerable<ProductGroupViewModel>> Get(RegisterNewProductGroupCommand productGroup)
+        public async Task<IEnumerable<ProductGroupViewModel>> Get()
         {
             var result = await _productGroupQueryAppService.GetAll();
             return result;
@@ -33,6 +33,13 @@ namespace Api.ProductGroup
         public async Task<ProductGroupViewModel> Get(long id)
         {
            return await _productGroupQueryAppService.GetById(id);
+        }
+
+        [AllowAnonymous]
+        [HttpGet("{id:guid}")]
+        public async Task<IEnumerable<ProductGroupViewModel>> GetListSubProductGroup(long id)
+        {
+            return await _productGroupQueryAppService.GetListSubProductGroupById(id);
         }
 
         [AllowAnonymous]

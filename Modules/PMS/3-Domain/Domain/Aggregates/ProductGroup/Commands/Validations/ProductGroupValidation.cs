@@ -22,9 +22,10 @@ namespace Domain.Aggregates.ProductGroup.Commands.Validations
         protected void ValidateId()
         {
             RuleFor(c => c.Id)
-                .NotEqual(null).WithMessage("Please ensure you have entered the ProductGroupId")
+                //.NotEqual(null).WithMessage("Please ensure you have entered the ProductGroupId")
                 .NotEqual(0).WithMessage("Please ensure you have entered the ProductGroupId Not Equal 0")
-                .Must(ValidateIdCode);
+                .Must(ValidateIdCode)
+                ;
         }
 
         protected static bool ValidateIdCode(long id) => id > 0;

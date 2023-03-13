@@ -24,9 +24,14 @@ namespace Infra.Data.Persistence.Repository.Query
             return await DbSet.FirstOrDefaultAsync(x => x.Id == id) ?? new ProductGroup();
         }
 
-        public Task<IEnumerable<ProductGroup>> GetAll()
+        public async Task<IEnumerable<ProductGroup>> GetAll()
         {
-            throw new NotImplementedException();
+            return await DbSet.ToListAsync();
+        }
+
+        public async Task<IEnumerable<ProductGroup>> GetListSubProductGroupById(long id)
+        {
+            return await DbSet.Where(x => x.ParentProductGroupId == id).ToListAsync();
         }
 
         public async Task<ProductGroup> GetByProductGroupName(string groupName)

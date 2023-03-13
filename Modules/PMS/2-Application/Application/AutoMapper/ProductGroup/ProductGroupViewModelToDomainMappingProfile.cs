@@ -10,11 +10,11 @@ public class ProductGroupViewModelToDomainMappingProfile : Profile
     {
         CreateMap<ProductGroupViewModel, RegisterNewProductGroupCommand>()
             .ConstructUsing(c =>
-                new RegisterNewProductGroupCommand(c.GroupName, c.Description));
+                new RegisterNewProductGroupCommand(c.GroupName, c.Description,c.Id));
 
         CreateMap<ProductGroupViewModel, UpdateProductGroupCommand>()
             .ConstructUsing(c =>
-                new UpdateProductGroupCommand(c.GroupName, c.Description));
+                new UpdateProductGroupCommand(c.GroupName, c.Description , c.Id));
 
         CreateMap<ProductGroupViewModel, RemoveProductGroupCommand>()
             .ConstructUsing(c =>

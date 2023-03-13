@@ -11,5 +11,6 @@ namespace Application.ProductGroup.Interface
     {
         Task<ProductGroupViewModel> GetById(long id);
         Task<IEnumerable<ProductGroupViewModel>> GetAll();
+        Task<IEnumerable<ProductGroupViewModel>> GetListSubProductGroupById(long id);
     }
 }

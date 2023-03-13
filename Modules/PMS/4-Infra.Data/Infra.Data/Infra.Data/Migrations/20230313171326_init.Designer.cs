@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infra.Data.Migrations
 {
     [DbContext(typeof(ProductManagementDbContext))]
-    [Migration("20230312105227_init")]
+    [Migration("20230313171326_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -57,7 +57,7 @@ namespace Infra.Data.Migrations
                     b.Property<DateTime>("SubmitDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 3, 12, 14, 22, 27, 176, DateTimeKind.Local).AddTicks(4241));
+                        .HasDefaultValue(new DateTime(2023, 3, 13, 20, 43, 26, 149, DateTimeKind.Local).AddTicks(9583));
 
                     b.HasKey("Id");
 
@@ -151,6 +151,11 @@ namespace Infra.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("varchar(100)");
+
+                    b.Property<long>("ParentProductGroupId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasDefaultValue(0L);
 
                     b.Property<DateTime>("SubmitDate")
                         .HasColumnType("datetime2");
