@@ -36,7 +36,7 @@ namespace Api.ProductGroup
         }
 
         [AllowAnonymous]
-        [HttpGet("{id:guid}")]
+        [HttpGet("GetListSubProductGroup/{id:guid}")]
         public async Task<IEnumerable<ProductGroupViewModel>> GetListSubProductGroup(long id)
         {
             return await _productGroupQueryAppService.GetListSubProductGroupById(id);

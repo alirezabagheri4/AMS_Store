@@ -23,7 +23,7 @@ namespace Domain.Aggregates.ProductGroup.Models
         {
             GroupName = groupName;
             Description = description;
-            Id = id;
+            ParentProductGroupId = id;
         }
 
         public ProductGroup()
