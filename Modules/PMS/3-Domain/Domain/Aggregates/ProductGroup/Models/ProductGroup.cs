@@ -29,5 +29,13 @@ namespace Domain.Aggregates.ProductGroup.Models
         public ProductGroup()
         {
         }
+
+        public ProductGroup(string groupName, string description, long id, long productGroupId)
+        {
+            GroupName = groupName;
+            Description = description;
+            ParentProductGroupId = id;
+            
+        }
     }
 }
