@@ -13,7 +13,7 @@ namespace Infra.Data.Persistence.Repository.Query
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<Product> DbSet;
 
-        public IUnitOfWork UnitOfWork => throw new NotImplementedException();
+        public IUnitOfWork UnitOfWork => DbContext;
 
         public ProductQueryRepository(ProductManagementDbContext dbContext)
         {

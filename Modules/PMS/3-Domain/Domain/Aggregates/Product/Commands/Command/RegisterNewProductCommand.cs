@@ -7,7 +7,7 @@ namespace Domain.Aggregates.Product.Commands.Command
     public class RegisterNewProductCommand : ProductCommand
     {
         public RegisterNewProductCommand(string name, eProductState productState,
-            long price, ProductDescription productDescription, ProductGroup.Models.ProductGroup ProductGroupId)
+            long price, string productDescription, long productGroupId)
         {
             this.Name = name;
             this.ProductState = productState;

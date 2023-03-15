@@ -9,7 +9,7 @@ namespace Domain.Aggregates.ProductGroup.Models
 
         public string Description { get; set; }
 
-        public long ParentProductGroupId { get; set; } 
+        public long ParentProductGroupId { get; set; }
 
         public ICollection<Product.Models.Product> Products { get; set; }
 
@@ -19,7 +19,12 @@ namespace Domain.Aggregates.ProductGroup.Models
             Description = description;
         }
 
-        public ProductGroup(string groupName, string description,long id)
+        public ProductGroup(long productGroup)
+        {
+            this.Id = productGroup;
+        }
+
+        public ProductGroup(string groupName, string description, long id)
         {
             GroupName = groupName;
             Description = description;
@@ -35,7 +40,7 @@ namespace Domain.Aggregates.ProductGroup.Models
             GroupName = groupName;
             Description = description;
             ParentProductGroupId = id;
-            
+
         }
     }
 }

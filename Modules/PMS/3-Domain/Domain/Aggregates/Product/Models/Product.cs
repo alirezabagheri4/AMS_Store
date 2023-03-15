@@ -18,13 +18,13 @@ namespace Domain.Aggregates.Product.Models
 
         public ProductGroup.Models.ProductGroup ProductGroup { get; set; }
 
-        public Product(string productName, eProductState productState, long price, string productDescription, ProductGroup.Models.ProductGroup productGroup)
+        public Product(string productName, eProductState productState, long price, ProductDescription productDescription, long productGroupId)
         {
             this.Name = productName;
             this.ProductState = productState;
             this.Price = price;
-            this.ProductDescription = new ProductDescription() { ProductDescriptionText = productDescription };
-            this.ProductGroup = productGroup;
+            this.ProductDescription = productDescription;
+            this.ProductGroup= new ProductGroup.Models.ProductGroup(productGroupId);
         }
 
         public Product()

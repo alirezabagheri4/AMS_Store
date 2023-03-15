@@ -11,7 +11,7 @@ namespace Infra.Data.Persistence.Repository.Command
         protected readonly ProductManagementDbContext DbContext;
         protected readonly DbSet<Product> DbSet;
 
-        public IUnitOfWork UnitOfWork => throw new NotImplementedException();
+        public IUnitOfWork UnitOfWork => DbContext;
 
         public ProductCommandRepository(ProductManagementDbContext dbContext)
         {
@@ -21,7 +21,7 @@ namespace Infra.Data.Persistence.Repository.Command
 
         public void Add(Product customer)
         {
-            DbSet.Add(customer);
+            var result=DbSet.Add(customer);
         }
 
         public void Update(Product customer)

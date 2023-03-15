@@ -30,15 +30,15 @@ namespace Domain.Aggregates.Product.Commands.Validations
 
         protected void ValidateProductDescriptionText()
         {
-            RuleFor(c => c.ProductDescription.ProductDescriptionText)
+            RuleFor(c => c.ProductDescription)
                 .NotEmpty()
                 .WithMessage("The ProductDescriptionText Is Invalid")
-                .Length(2, 50).WithMessage("The ProductDescriptionText must have between 2 and 100 characters"); ;
+                .Length(2, 500).WithMessage("The ProductDescriptionText must have between 2 and 500 characters"); ;
         }
 
         protected void ValidateProductDescription_ProductId()
         {
-            RuleFor(c => c.ProductDescription.ProductId)
+            RuleFor(c => c.ProductGroupId)
                 .NotNull()
                 .WithMessage("The ProductDescription_ProductId Is Invalid - ProductDescription_ProductId NotNull");
         }

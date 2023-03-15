@@ -13,8 +13,8 @@ namespace Domain.Aggregates.Product.Commands.Command
 
         public long Price { get; set; }
 
-        public ProductDescription ProductDescription { get; set; }
+        public string ProductDescription { get; set; }
 
-        public ProductGroup.Models.ProductGroup ProductGroupId { get; set; }
+        public long ProductGroupId { get; set; }
     }
 }

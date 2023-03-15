@@ -16,6 +16,6 @@ namespace Application.ViewModel
 
         public string ProductDescriptionText { get; set; }
 
-        public ProductGroupViewModel ProductGroup { get; set; }
+        public long ProductGroupId { get; set; }
     }
 }

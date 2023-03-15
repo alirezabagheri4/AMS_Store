@@ -26,8 +26,11 @@ namespace Domain.Aggregates.Product.Commands.Handlers
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var product = new Models.Product(message.Name, message.ProductState, message.Price,
-                message.ProductDescription.ProductDescriptionText, message.ProductGroupId);
+            var productDescription = new Models.ProductDescription(message.ProductDescription);
+
+            var product = new Models.Product(message.Name, message.ProductState, message.Price, 
+                productDescription, message.ProductGroupId);
+            _productRepository.Add(product);
 
             //if (await _productRepository.GetByName(product.name) != null)
             //{
@@ -35,10 +38,10 @@ namespace Domain.Aggregates.Product.Commands.Handlers
             //    return ValidationResult;
             //}
 
-            product.AddDomainEvent(new ProductRegisteredEvent(product.Id,product.Name, product.ProductState, product.Price,
-                product.ProductDescription,product.ProductGroup));
+            //product.AddDomainEvent(new ProductRegisteredEvent(product.Id,product.Name, product.ProductState, product.Price,
+            //    product.ProductDescription,product.ProductGroup));
 
-            _productRepository.Add(product);
+           
 
             return await Commit(_productRepository.UnitOfWork);
         }
@@ -46,9 +49,9 @@ namespace Domain.Aggregates.Product.Commands.Handlers
         public async Task<FluentValidation.Results.ValidationResult> Handle(UpdateProductCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid()) return message.ValidationResult;
-
+            var productDescription = new Models.ProductDescription(message.ProductDescription);
             var product = new Models.Product(message.Name, message.ProductState, message.Price,
-                message.ProductDescription.ProductDescriptionText, message.ProductGroupId);
+                productDescription, message.ProductGroupId);
 
             var existingCustomer = await _productQueryRepository.GetById(message.Id);
 

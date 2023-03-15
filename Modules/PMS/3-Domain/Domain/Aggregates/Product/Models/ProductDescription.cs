@@ -5,8 +5,20 @@ namespace Domain.Aggregates.Product.Models
 {
     public class ProductDescription : BaseEntity, IAggregateRoot
     {
-        public long ProductId { get; set; }
-
         public string ProductDescriptionText { get; set; }
+
+        public ProductDescription(long productId, string productDescriptionText)
+        {
+            ProductDescriptionText=productDescriptionText;
+        }
+
+        public ProductDescription(string productDescriptionText)
+        {
+            ProductDescriptionText = productDescriptionText;
+        }
+
+        public ProductDescription()
+        {
+        }
     }
 }
