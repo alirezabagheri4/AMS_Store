@@ -23,6 +23,7 @@ using Domain.Common;
 using FluentValidation.Results;
 using Infra.Bus;
 using Infra.Data.Persistence.Context;
+using Infra.Data.Persistence.Context.DapperDbContext;
 using Infra.Data.Persistence.Repository.Command;
 using Infra.Data.Persistence.Repository.Query;
 using MediatR;
@@ -88,6 +89,7 @@ namespace Infra.Ioc
             services.AddScoped<IProductDescriptionQueryRepository, ProductDescriptionQueryRepository>();
 
             services.AddScoped<ProductManagementDbContext>();
+            services.AddSingleton<ProductDapperContext>();
 
             // Infra - Data EventSourcing
             //services.AddScoped<IEventStoreRepository, EventStoreSqlRepository>();

@@ -7,6 +7,7 @@ namespace Domain.Aggregates.Product.Models
     {
         public string ProductDescriptionText { get; set; }
 
+
         public ProductDescription(long productId, string productDescriptionText)
         {
             ProductDescriptionText=productDescriptionText;

@@ -76,11 +76,11 @@ namespace Domain.Aggregates.Product.Commands.Handlers
         {
             if (!message.IsValid()) return message.ValidationResult;
 
-            var product = await _productQueryRepository.GetById(message.Id);
+            var product = await _productQueryRepository.GetProductById(message.Id);
 
             if (product is null)
             {
-                AddError("The customer doesn't exists.");
+                AddError("The product doesn't exists.");
                 return ValidationResult;
             }
 

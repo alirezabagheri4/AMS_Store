@@ -4,7 +4,7 @@ using Domain.Aggregates.Product.Models;
 
 namespace Application.ViewModel
 {
-    public class ProductTitleViewModel
+    public class ProductViewModel
     {
         public long Id { get; set; }
 
@@ -13,5 +13,9 @@ namespace Application.ViewModel
         public ProductStateEnum ProductState { get; set; }
 
         public long Price { get; set; }
+
+        public string ProductDescriptionText { get; set; }
+
+        public long ProductGroupId { get; set; }
     }
 }

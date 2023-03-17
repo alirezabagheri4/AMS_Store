@@ -9,7 +9,13 @@ namespace Application.ProductService.Interface
 {
     public interface IProductQueryAppServiceHandler
     {
-        Task<ProductViewModel> GetById(long id);
-        Task<IEnumerable<ProductViewModel>> GetAll();
+        Task<IEnumerable<ProductViewModel>> GetAllProduct();
+        Task<IEnumerable<ProductTitleViewModel>> GetAllProductTitle();
+        Task<ProductTitleViewModel> GetProductTitleById(long id);
+        Task<ProductViewModel> GetProductById(long id);
+        Task<IEnumerable<ProductViewModel>> GetActiveProduct();
+        Task<IEnumerable<ProductTitleViewModel>> GetActiveProductTitle();
+        Task<IEnumerable<ProductViewModel>> GetProductByProductState();
+        Task<IEnumerable<ProductTitleViewModel>> GetProductTitleByProductState();
     }
 }

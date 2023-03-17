@@ -22,7 +22,7 @@ internal class ProductConfig : IEntityTypeConfiguration<Product>
         builder.HasIndex(c => new { c.Name }).IsUnique();
 
         //one to one
-        builder.HasOne(product => product.ProductDescription).WithOne();
+        builder.HasOne(product => product.ProductDescription);
 
         //one to many
         builder.HasMany(product => product.ProductComments).WithOne().HasForeignKey(comment => comment.ProductId);

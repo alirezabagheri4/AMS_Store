@@ -1,4 +1,6 @@
-﻿using Domain.Aggregates.ProductComment.Interface;
+﻿using Domain.Aggregates.Product.Interfaces.IRepository.IQuery;
+using Domain.Aggregates.Product.Models;
+using Domain.Aggregates.ProductComment.Interface;
 using Domain.Aggregates.ProductComment.Models;
 using Domain.Common;
 using Infra.Data.Persistence.Context;
@@ -31,12 +33,12 @@ namespace Infra.Data.Persistence.Repository.Query
 
         public async Task<ProductComment> GetByProductId(long productId)
         {
-            return await DbSet.FirstOrDefaultAsync(x => x.ProductId == productId) ?? new ProductComment();
+            return await DbSet.FirstOrDefaultAsync(x => x.Id == productId) ?? new ProductComment();
         }
 
         public async Task<IEnumerable<ProductComment>> GetWithProduct()
         {
-            var result = await DbSet.Include(x => x.ProductId).AsNoTracking().ToListAsync();
+            var result = await DbSet.Include(x => x.Id).AsNoTracking().ToListAsync();
             return result;
         }
 

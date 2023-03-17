@@ -6,32 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Product
 {
-    [Route("PMS/Product")]
-    public class ProductController : ApiController
+    [Route("PMS/ProductCommand")]
+    public class ProductCommandController : ApiController
     {
         private readonly IProductCommandAppServiceHandler _productCommandAppService;
-        private readonly IProductQueryAppServiceHandler _productQueryAppService;
 
-        public ProductController(IProductCommandAppServiceHandler productCommandAppService,
-            IProductQueryAppServiceHandler productQueryAppService)
+        public ProductCommandController(IProductCommandAppServiceHandler productCommandAppService)
         {
             _productCommandAppService = productCommandAppService;
-            _productQueryAppService = productQueryAppService;
-        }
-
-        [AllowAnonymous]
-        [HttpGet]
-        public async Task<IEnumerable<ProductViewModel>> GetAll()
-        {
-           return await _productQueryAppService.GetAll();
-        }
-
-        [AllowAnonymous]
-        [HttpGet("{id:guid}")]
-        public async Task<ProductViewModel> Get(long id)
-        {
-            var result = await _productQueryAppService.GetById(id);
-            return result;
         }
 
         [AllowAnonymous]

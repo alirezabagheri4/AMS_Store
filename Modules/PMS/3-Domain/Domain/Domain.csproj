@@ -21,9 +21,11 @@
     <Folder Include="Aggregates\ProductComment\Enum\" />
     <Folder Include="Aggregates\ProductComment\Event\EventHandler\" />
     <Folder Include="Aggregates\ProductComment\Event\EventModel\" />
+    <Folder Include="Aggregates\ProductComment\ValueObjects\" />
     <Folder Include="Aggregates\ProductGroup\Enum\" />
     <Folder Include="Aggregates\ProductGroup\Event\EventHandler\" />
     <Folder Include="Aggregates\ProductGroup\Event\EventModel\" />
+    <Folder Include="Aggregates\ProductGroup\ValueObjects\" />
   </ItemGroup>
 
 </Project>

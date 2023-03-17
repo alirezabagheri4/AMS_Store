@@ -39,6 +39,7 @@ public static class ServiceExtension
         builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 
         builder.Services.AddDependencyInjectionConfiguration();
+        
         return builder.Build();
     }
 }

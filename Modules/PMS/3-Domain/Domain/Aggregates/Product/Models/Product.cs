@@ -17,6 +17,7 @@ namespace Domain.Aggregates.Product.Models
         public ProductDescription ProductDescription { get; set; }
 
         public ProductGroup.Models.ProductGroup ProductGroup { get; set; }
+        public long ProductGroupId { get; set; }
 
         public Product(string productName, eProductState productState, long price, ProductDescription productDescription, long productGroupId)
         {
@@ -24,7 +25,7 @@ namespace Domain.Aggregates.Product.Models
             this.ProductState = productState;
             this.Price = price;
             this.ProductDescription = productDescription;
-            this.ProductGroup= new ProductGroup.Models.ProductGroup(productGroupId);
+            this.ProductGroupId= productGroupId;
         }
 
         public Product()
