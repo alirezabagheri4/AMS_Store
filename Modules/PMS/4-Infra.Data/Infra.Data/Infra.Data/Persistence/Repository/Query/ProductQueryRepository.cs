@@ -132,7 +132,12 @@ namespace Infra.Data.Persistence.Repository.Query
             return companies.AsEnumerable();
         }
 
-        public Task<IEnumerable<ProductDto>> GetProductByProductState(eProductState productState)
+        public Task<IEnumerable<ProductDto>> GetProductByProductState()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Product>> GetProductByProductState(eProductState productState)
         {
             const string query = @"SELECT TOP (1000) p.[Id]
                              ,[Name]
@@ -144,8 +149,8 @@ namespace Infra.Data.Persistence.Repository.Query
                     FROM [PMS-DB].[PMS].[Product] p
                     where p.[ProductState]=@stateCode";
             using var connection = DbContext.CreateConnection();
-            var company = await connection.QuerySingleOrDefaultAsync<Product>(query, new { id });
-            return company;
+            var company = await connection.QueryAsync<Product>(query, new { productState });
+            return company.AsEnumerable();
         }
 
         public Task<IEnumerable<Product>> GetProductTitleByProductState()
