@@ -8,18 +8,18 @@ namespace Api.Otp
 {
     public class OtpController
     {
-        private readonly ICustomerCommandAppServiceHandler _customerCommandAppService;
+        private readonly IOtpAppServiceHandler _otpAppServiceHandler;
 
-        public OtpController(ICustomerCommandAppServiceHandler customerCommandAppService)
+        public OtpController(IOtpAppServiceHandler otpAppServiceHandler)
         {
-            _customerCommandAppService = customerCommandAppService;
+            _otpAppServiceHandler = otpAppServiceHandler;
         }
 
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IEnumerable<CustomerViewModel>> SendOtp(RegisterNewCustomerCommand customer)
+        public async Task<SendOtpResponseViewModel> SendOtp(SendOtpRequestViewModel command)
         {
-            var result = await _customerCommandAppService.Register(customer);
+            var result = await _otpAppServiceHandler.SendOtp(command);
             return result;
         }
 

@@ -19,8 +19,4 @@
     <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Aggregates\OtpAggregate\Models\" />
-  </ItemGroup>
-
 </Project>
