@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Customer
 {
-    [Route("CMS")]
+    [Route("CMS/Customer")]
     public class CustomerController : ApiController
     {
         private readonly ICustomerCommandAppServiceHandler _customerCommandAppService;

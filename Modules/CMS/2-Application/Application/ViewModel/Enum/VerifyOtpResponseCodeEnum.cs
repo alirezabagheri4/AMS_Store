@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Application.ViewModel.Enum
 {
-    public enum OtpResponseCodeEnum
+    public enum VerifyOtpResponseCodeEnum
     {
         Unknown = 0,
         Ok = 1,
-        PhoneNumberIsInvalid = 2,
+        NotOk = 2,
     }
 }

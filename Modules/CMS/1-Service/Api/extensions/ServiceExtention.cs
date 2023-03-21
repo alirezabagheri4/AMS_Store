@@ -38,6 +38,9 @@ public static class ServiceExtension
         // Adding MediatR for Domain Events and Notifications
         builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 
+        //Add-InMemory Cache
+        builder.Services.AddMemoryCache();
+
         builder.Services.AddDependencyInjectionConfiguration();
         return builder.Build();
     }

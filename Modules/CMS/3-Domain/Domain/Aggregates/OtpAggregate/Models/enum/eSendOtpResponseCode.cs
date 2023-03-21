@@ -1,6 +1,6 @@
 ﻿namespace Domain.Aggregates.OtpAggregate.Models.@enum
 {
-    public enum EOtpResponseCode
+    public enum eSendOtpResponseCode
     {
         Unknown = 0,
         Ok = 1,

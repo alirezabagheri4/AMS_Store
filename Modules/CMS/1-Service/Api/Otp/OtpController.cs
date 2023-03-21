@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Otp
 {
+    [Route("CMS/Otp")]
     public class OtpController
     {
         private readonly IOtpAppServiceHandler _otpAppServiceHandler;
@@ -16,18 +17,18 @@ namespace Api.Otp
         }
 
         [AllowAnonymous]
-        [HttpGet]
-        public async Task<SendOtpResponseViewModel> SendOtp(SendOtpRequestViewModel command)
+        [HttpPost("SendOtp")]
+        public async Task<SendOtpResponseViewModel> SendOtp(SendOtpRequestViewModel  requestViewModel)
         {
-            var result = await _otpAppServiceHandler.SendOtp(command);
+            var result = await _otpAppServiceHandler?.SendOtp(requestViewModel);
             return result;
         }
 
         [AllowAnonymous]
-        [HttpGet]
-        public async Task<IEnumerable<CustomerViewModel>> VerifyOtp(RegisterNewCustomerCommand customer)
+        [HttpPost("VerifyOtp")]
+        public async Task<VerifyOtpResponseViewModel> VerifyOtp(VerifyOtpRequestViewModel requestViewModel)
         {
-            var result = await _customerCommandAppService.Register(customer);
+            var result = await _otpAppServiceHandler?.VerifyOtp(requestViewModel);
             return result;
         }
     }

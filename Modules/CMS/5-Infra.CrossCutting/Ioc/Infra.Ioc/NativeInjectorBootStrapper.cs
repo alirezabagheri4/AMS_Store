@@ -1,8 +1,10 @@
 ﻿using Application.CustomerService.Command;
 using Application.Interface;
+using Application.OtpService;
 using Domain.Aggregates.CustomerAggregate.Commands.Command;
 using Domain.Aggregates.CustomerAggregate.Commands.Handlers;
 using Domain.Aggregates.CustomerAggregate.Interfaces.IRepository;
+using Domain.Aggregates.OtpAggregate.Interface;
 using Domain.Common;
 using Domain.Events.EventModel;
 using Domain.Events.Handler;
@@ -11,6 +13,7 @@ using Infra.Bus;
 using Infra.Data.Persistence.Context;
 using Infra.Data.Persistence.Context.DapperContext;
 using Infra.Data.Persistence.Repository;
+using Infra.Identity.OtpGenerator;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -25,6 +28,7 @@ namespace Infra.Ioc
 
             // Application
             services.AddScoped<ICustomerCommandAppServiceHandler, CustomerAppServiceHandler>();
+            services.AddScoped<IOtpAppServiceHandler, OtpAppServiceHandler>();
 
             // Domain - Events
             services.AddScoped<INotificationHandler<CustomerRegisteredEvent>, CustomerEventHandler>();
@@ -42,6 +46,9 @@ namespace Infra.Ioc
             services.AddScoped<CustomerDbContext>();
 
             services.AddSingleton<CustomerDapperContext>();
+
+            //Infra.Identity
+            services.AddScoped<IExternalOtpService, OtpServiceAgent>();
 
             // Infra - Data EventSourcing
             //services.AddScoped<IEventStoreRepository, EventStoreSqlRepository>();

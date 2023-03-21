@@ -35,30 +35,54 @@ namespace Infra.Identity.OtpGenerator
 
 
         //TODO:Refactor
-        public bool VerifyOtp(string phoneNumber, string input)
+        public Task<bool> VerifyOtp(string phoneNumber, string input)
         {
             var totp = _memoryCache.Get<Totp>(phoneNumber);
-            if (totp == null) return false;
+            if (totp == null) return Task.FromResult(false);
 
             bool verify = totp.VerifyTotp(input, out var timeStepMatched, window: null);
             Console.WriteLine("{0}-:{1}", "timeStepMatched", timeStepMatched);
             Console.WriteLine("{0}-:{1}", "Remaining seconds", totp.RemainingSeconds());
             Console.WriteLine("{0}-:{1}", "verify", verify);
-            return verify;
+            return Task.FromResult(verify);
         }
+
 
         //TODO:Refactor
         public Task<SendOtpResponse> SendOtp(string receptor, string otp)
         {
-            string? sender = _configuration.GetRequiredSection("sender").ToString();
-            var message = $"{_configuration.GetRequiredSection("KaveNegarMessage")} \n {otp} ";
-            var api = new KavenegarApi(_configuration.GetRequiredSection("ApiKeyKaveNegar").ToString());
-            api.Send(sender, receptor, message);
-            return Task.FromResult(new SendOtpResponse
+            try
             {
-                OtpResponseCodeEnum = EOtpResponseCode.Ok,
-                PhoneNumber = receptor
-            });
+                Kavenegar.KavenegarApi api = new Kavenegar.KavenegarApi(_configuration?.GetSection("Identity")["ApiKeyKaveNegar"]);
+                var result = api.Send("10008663",
+                    receptor, $"{_configuration?.GetSection("Identity")["KaveNegarMessage"]} \n {otp} ");
+                return Task.FromResult(new SendOtpResponse
+                {
+                    OtpResponseCodeEnum = eSendOtpResponseCode.Ok,
+                    PhoneNumber = receptor
+                });
+            }
+            catch (Kavenegar.Exceptions.ApiException ex)
+            {
+                // در صورتی که خروجی وب سرویس 200 نباشد این خطارخ می دهد.
+                Console.Write("Message : " + ex.Message);
+                return Task.FromResult(new SendOtpResponse
+                {
+                    OtpResponseCodeEnum = eSendOtpResponseCode.Unknown,
+                    PhoneNumber = receptor
+                });
+            }
+            catch (Kavenegar.Exceptions.HttpException ex)
+            {
+                // در زمانی که مشکلی در برقرای ارتباط با وب سرویس وجود داشته باشد این خطا رخ می دهد
+                Console.Write("Message : " + ex.Message);
+                return Task.FromResult(new SendOtpResponse
+                {
+                    OtpResponseCodeEnum = eSendOtpResponseCode.Unknown,
+                    PhoneNumber = receptor
+                });
+            }
         }
+
     }
 }

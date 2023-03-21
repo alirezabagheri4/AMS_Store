@@ -10,5 +10,6 @@ namespace Application.Interface
     public interface IOtpAppServiceHandler
     {
         Task<SendOtpResponseViewModel> SendOtp(SendOtpRequestViewModel command);
+        Task<VerifyOtpResponseViewModel> VerifyOtp(VerifyOtpRequestViewModel command);
     }
 }

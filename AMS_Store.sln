@@ -105,7 +105,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6-Agent", "6-Agent", "{665C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra.Identity", "Infra.Identity", "{AAFA97A0-ACC6-4471-97C0-D912C85C4989}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Identity", "Modules\CMS\Infra.Identity\Infra.Identity\Infra.Identity.csproj", "{809E8035-09BD-4449-A5BE-AD888150AE61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Identity", "Modules\CMS\Infra.Identity\Infra.Identity\Infra.Identity.csproj", "{809E8035-09BD-4449-A5BE-AD888150AE61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

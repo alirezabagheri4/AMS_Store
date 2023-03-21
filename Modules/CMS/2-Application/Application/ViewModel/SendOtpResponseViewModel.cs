@@ -11,6 +11,6 @@ namespace Application.ViewModel
     public class SendOtpResponseViewModel
     {
         public string PhoneNumber { get; set; }
-        public  OtpResponseCodeEnum OtpResponseCodeEnum { get; set; }
+        public SendOtpResponseCodeEnum OtpResponseCodeEnum { get; set; }
     }
 }

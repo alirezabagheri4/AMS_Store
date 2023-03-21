@@ -10,6 +10,6 @@ namespace Domain.Aggregates.OtpAggregate.Models
     public class SendOtpResponse
     {
         public string PhoneNumber { get; set; }
-        public EOtpResponseCode OtpResponseCodeEnum { get; set; }
+        public eSendOtpResponseCode OtpResponseCodeEnum { get; set; }
     }
 }

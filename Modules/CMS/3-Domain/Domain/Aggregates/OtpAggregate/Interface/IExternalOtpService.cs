@@ -11,5 +11,7 @@ namespace Domain.Aggregates.OtpAggregate.Interface
     {
         Task<SendOtpResponse> SendOtp(string receptor, string otp);
         string GenerateOtp(string phoneNumber);
+
+        Task<bool> VerifyOtp(string phoneNumber, string input);
     }
 }
